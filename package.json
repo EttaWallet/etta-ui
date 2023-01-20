@@ -20,7 +20,7 @@
     "ios",
     "cpp",
     "react-native.config.js",
-    "react-native-nucleus-ui.podspec",
+    "etta-ui.podspec",
     "!lib/typescript/showcase",
     "!android/build",
     "!ios/build",

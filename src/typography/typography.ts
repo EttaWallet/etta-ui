@@ -1,8 +1,13 @@
+/****
+ * As seen in https://www.bitcoinuikit.com/foundation
+ * Line heights are all 140% of the fontSize for each preset
+ * Font weights are either Semi-Bold or Regular
+ ****/
+
 import type { TextStyle } from 'react-native';
 
 const Fonts = {
-  Bold: 'Inter-Bold',
-  Medium: 'Inter-Medium',
+  SemiBold: 'Inter-SemiBold',
   Regular: 'Inter-Regular',
 } as const;
 
@@ -19,75 +24,16 @@ function fontSetup(
 }
 
 export const TypographyPresets = {
-  H1: fontSetup(48, 56, 'Bold'),
-  H2: fontSetup(32, 36, 'Bold'),
-  H3: fontSetup(24, 32, 'Bold'),
-  Large: {
-    None: {
-      Bold: fontSetup(18, 18, 'Bold'),
-      Medium: fontSetup(18, 18, 'Medium'),
-      Regular: fontSetup(18, 18, 'Regular'),
-    },
-    Tight: {
-      Bold: fontSetup(18, 20, 'Bold'),
-      Medium: fontSetup(18, 20, 'Medium'),
-      Regular: fontSetup(18, 20, 'Regular'),
-    },
-    Normal: {
-      Bold: fontSetup(18, 24, 'Bold'),
-      Medium: fontSetup(18, 24, 'Medium'),
-      Regular: fontSetup(18, 24, 'Regular'),
-    },
-  },
-  Regular: {
-    None: {
-      Bold: fontSetup(16, 16, 'Bold'),
-      Medium: fontSetup(16, 16, 'Medium'),
-      Regular: fontSetup(16, 16, 'Regular'),
-    },
-    Tight: {
-      Bold: fontSetup(16, 20, 'Bold'),
-      Medium: fontSetup(16, 20, 'Medium'),
-      Regular: fontSetup(16, 20, 'Regular'),
-    },
-    Normal: {
-      Bold: fontSetup(16, 24, 'Bold'),
-      Medium: fontSetup(16, 24, 'Medium'),
-      Regular: fontSetup(16, 24, 'Regular'),
-    },
-  },
-  Small: {
-    None: {
-      Bold: fontSetup(14, 14, 'Bold'),
-      Medium: fontSetup(14, 14, 'Medium'),
-      Regular: fontSetup(14, 14, 'Regular'),
-    },
-    Tight: {
-      Bold: fontSetup(14, 16, 'Bold'),
-      Medium: fontSetup(14, 16, 'Medium'),
-      Regular: fontSetup(14, 16, 'Regular'),
-    },
-    Normal: {
-      Bold: fontSetup(14, 20, 'Bold'),
-      Medium: fontSetup(14, 20, 'Medium'),
-      Regular: fontSetup(14, 20, 'Regular'),
-    },
-  },
-  Tiny: {
-    None: {
-      Bold: fontSetup(12, 12, 'Bold'),
-      Medium: fontSetup(12, 12, 'Medium'),
-      Regular: fontSetup(12, 12, 'Regular'),
-    },
-    Tight: {
-      Bold: fontSetup(12, 14, 'Bold'),
-      Medium: fontSetup(12, 14, 'Medium'),
-      Regular: fontSetup(12, 14, 'Regular'),
-    },
-    Normal: {
-      Bold: fontSetup(12, 16, 'Bold'),
-      Medium: fontSetup(12, 16, 'Medium'),
-      Regular: fontSetup(12, 16, 'Regular'),
-    },
-  },
+  // Headings
+  Header1: fontSetup(36, 50.4, 'SemiBold'),
+  Header2: fontSetup(28, 39.2, 'SemiBold'),
+  Header3: fontSetup(24, 33.6, 'SemiBold'),
+  Header4: fontSetup(21, 29.4, 'SemiBold'),
+  Header5: fontSetup(18, 25.2, 'SemiBold'),
+  // Body
+  Body1: fontSetup(24, 33.6, 'Regular'),
+  Body2: fontSetup(21, 29.4, 'Regular'),
+  Body3: fontSetup(18, 25.2, 'Regular'),
+  Body4: fontSetup(15, 21, 'Regular'),
+  Body5: fontSetup(13, 18.2, 'Regular'),
 } as const;
