@@ -35,7 +35,7 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepare": "bob build",
     "release": "release-it",
-    "example": "yarn --cwd showcase",
+    "showcase": "yarn --cwd showcase",
     "pods": "cd showcase && pod-install --quiet",
     "bootstrap": "yarn showcase && yarn && yarn pods"
   },
