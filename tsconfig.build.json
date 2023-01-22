@@ -1,6 +1,5 @@
 
 {
-    "extends": "./tsconfig",
-    "exclude": ["showcase"]
-  }
-  
+  "extends": "./tsconfig",
+  "exclude": ["example"]
+}

@@ -9,8 +9,7 @@ import {
 } from 'react-native';
 import { buttonVars } from './button.vars';
 import { getContainerStyle, getIconStyle, getTextStyle } from './button.style';
-import { Icon } from '../icon';
-import { useTheme } from 'src/theme';
+import { useTheme, Icon } from 'etta-ui';
 import type { ValueOf } from '../../utils';
 
 export interface ButtonProps extends TouchableOpacityProps {
@@ -86,12 +85,10 @@ const ButtonComponent = React.forwardRef<View, ButtonProps>((props, ref) => {
       {icon && iconPosition === buttonVars.iconPositions.left ? (
         <Icon name={icon} style={buttonIconStyle} />
       ) : null}
-
       {icon && iconPosition === buttonVars.iconPositions.side ? (
         <Icon name={icon} style={buttonIconStyle} />
       ) : null}
       <Text style={[buttonTextStyle, textStyle]}>{title}</Text>
-
       {icon && iconPosition === buttonVars.iconPositions.right ? (
         <Icon name={icon} style={buttonIconStyle} />
       ) : null}

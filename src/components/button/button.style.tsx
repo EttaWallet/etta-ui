@@ -3,7 +3,7 @@ import type { Theme } from '../../theme';
 import { createThemedStyleSheet } from '../../theme';
 import { buttonVars } from './button.vars';
 import type { ValueOf } from '../../utils';
-import { TypographyPresets } from '../../typography';
+import { TypographyPresets } from 'etta-ui';
 import { selectStyles } from '../../utils/select-styles';
 
 const { sizes, iconPositions, appearances } = buttonVars;
@@ -13,7 +13,7 @@ const getStyles = createThemedStyleSheet((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderRadius: 48,
+    borderRadius: 5,
   },
 
   container__appearance_filled__state_default: {
