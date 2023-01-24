@@ -4,6 +4,9 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Button } from 'etta-ui';
 import type { ViewStyle } from 'react-native';
 import { ScrollView } from 'react-native';
+import { iconNameToGlyphMap } from '../../src/components/icon/icon.vars';
+
+const icons = Object.keys(iconNameToGlyphMap);
 
 const scrollViewWithPaddingStyle: ViewStyle = {
   flexDirection: 'row',
@@ -29,17 +32,18 @@ export default {
       control: { type: 'radio' },
     },
     size: {
-      options: ['large', 'small', 'block'],
+      options: ['default', 'large', 'small'],
       control: { type: 'radio' },
     },
     disabled: {
       control: { type: 'boolean' },
     },
     icon: {
-      control: { type: 'text' },
+      options: icons,
+      control: { type: 'select' },
     },
     iconPosition: {
-      options: ['left', 'right', 'side'],
+      options: ['left', 'right'],
       control: { type: 'radio' },
     },
     onPress: { action: 'pressed' },
@@ -48,12 +52,22 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const ButtonDemo = Template.bind({});
+export const NormalButton = Template.bind({});
 
-ButtonDemo.args = {
+NormalButton.args = {
   title: 'I am a button',
   appearance: 'filled',
-  size: 'large',
+  size: 'default',
+};
+
+NormalButton.parameters = { controls: { exclude: ['icon', 'iconPosition'] } };
+
+export const ButtonWithIcon = Template.bind({});
+
+ButtonWithIcon.args = {
+  title: 'Button with icon',
+  appearance: 'filled',
+  size: 'default',
   icon: 'icon-arrow-up',
   iconPosition: 'left',
 };

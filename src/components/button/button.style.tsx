@@ -2,7 +2,7 @@ import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import type { Theme } from '../../theme';
 import { createThemedStyleSheet } from '../../theme';
 import { buttonVars } from './button.vars';
-import { TypographyPresets, ValueOf } from 'etta-ui';
+import type { ValueOf } from 'etta-ui';
 import { selectStyles } from '../../utils/select-styles';
 
 const { sizes, iconPositions, appearances } = buttonVars;
@@ -59,15 +59,26 @@ const getStyles = createThemedStyleSheet((theme) => ({
     borderColor: theme.buttons.transparent.border.disabled,
   },
 
-  container__size_largeOrBlock__icon_noneOrSide: {
+  // --- CONTAINER SIZE DEFAULT ---
+  container__size_default: {
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+  },
+
+  container__size_default__icon_left: {
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+
+  container__size_default__icon_right: {
     paddingLeft: 20,
     paddingRight: 20,
   },
 
   // --- CONTAINER SIZE LARGE ---
   container__size_large: {
-    paddingTop: 19,
-    paddingBottom: 19,
+    paddingVertical: 19,
+    paddingHorizontal: 20,
   },
 
   container__size_large__icon_left: {
@@ -80,34 +91,10 @@ const getStyles = createThemedStyleSheet((theme) => ({
     paddingRight: 20,
   },
 
-  // --- CONTAINER SIZE BLOCK ---
-
-  container__size_block: {
-    width: '100%',
-    justifyContent: 'center',
-    paddingTop: 10,
-    paddingBottom: 10,
-  },
-
-  container__size_block__icon_left: {
-    paddingLeft: 15,
-    paddingRight: 15 + 24,
-  },
-
-  container__size_block__icon_right: {
-    paddingLeft: 12 + 24,
-    paddingRight: 12,
-  },
-
   // --- CONTAINER SIZE SMALL ---
   container__size_small: {
-    paddingTop: 3,
-    paddingBottom: 3,
-  },
-
-  container__size_small__icon_noneOrSide: {
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingVertical: 6,
+    paddingHorizontal: 15,
   },
 
   container__size_small__icon_left: {
@@ -117,55 +104,73 @@ const getStyles = createThemedStyleSheet((theme) => ({
 
   container__size_small_icon_right: {
     paddingLeft: 15,
-    paddingRight: 7,
+    paddingRight: 15,
   },
 
   text: {
-    ...TypographyPresets.Header5, // fontsize: 18, line-height: 25.2. Shouldn't line-height be equal to fontSize?
+    fontSize: 15,
+    fontWeight: '500',
     textAlign: 'center',
-    lineHeight: 20,
+    lineHeight: 18,
   },
 
-  text__size_large__icon_side: {
-    marginLeft: 15,
+  text_default: {
+    fontSize: 18,
+    lineHeight: 18,
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+
+  text_large: {
+    fontSize: 21,
+    lineHeight: 22,
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+
+  text_small: {
+    fontSize: 15,
+    lineHeight: 18,
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+
+  text__size_default__icon_right: {
+    marginLeft: 5,
+  },
+
+  text__size_default__icon_left: {
+    marginLeft: 5,
   },
 
   text__size_large__icon_left: {
-    marginLeft: 15,
+    marginLeft: 5,
   },
 
   text__size_large__icon_right: {
-    marginRight: 15,
-  },
-
-  text__size_block__icon_leftOrRight: {
-    marginRight: 'auto',
-    marginLeft: 'auto',
-  },
-
-  text__size_block__icon_side: {
-    marginLeft: 8,
+    marginRight: 5,
   },
 
   text__size_small__icon_left: {
-    marginLeft: 8,
+    marginLeft: 5,
   },
 
   text__size_small__icon_right: {
-    marginRight: 8,
-  },
-
-  text__size_small__icon_side: {
-    marginLeft: 4,
+    marginRight: 5,
   },
 
   icon: {
     textAlign: 'center',
   },
 
-  icon__size_largeOrBlock: {
-    fontSize: 24,
-    width: 24,
+  icon__size_default: {
+    fontSize: 18,
+    width: 18,
+  },
+
+  icon__size_large: {
+    fontSize: 20,
+    width: 20,
   },
 
   icon__size_small: {
@@ -235,13 +240,22 @@ export function getContainerStyle(options: {
 
     {
       container: true,
-      container__size_large: {
-        size: sizes.large,
+      container__size_default: {
+        size: sizes.default,
       },
 
-      container__size_largeOrBlock__icon_noneOrSide: {
-        iconPosition: [undefined, iconPositions.side],
-        size: [sizes.large, sizes.block],
+      container__size_default__icon_right: {
+        iconPosition: iconPositions.right,
+        size: sizes.default,
+      },
+
+      container__size_default__icon_left: {
+        iconPosition: iconPositions.left,
+        size: sizes.default,
+      },
+
+      container__size_large: {
+        size: sizes.large,
       },
 
       container__size_large__icon_right: {
@@ -254,27 +268,8 @@ export function getContainerStyle(options: {
         size: sizes.large,
       },
 
-      container__size_block: {
-        size: sizes.block,
-      },
-
-      container__size_block__icon_left: {
-        iconPosition: iconPositions.left,
-        size: sizes.block,
-      },
-
-      container__size_block__icon_right: {
-        iconPosition: iconPositions.right,
-        size: sizes.block,
-      },
-
       container__size_small: {
         size: sizes.small,
-      },
-
-      container__size_small__icon_noneOrSide: {
-        size: sizes.small,
-        iconPosition: [undefined, iconPositions.side],
       },
 
       container__size_small__icon_left: {
@@ -364,9 +359,15 @@ export function getTextStyle(options: {
     { size, iconPosition, appearance, isDisabled, isPressed },
     {
       text: true,
-      text__size_large__icon_side: {
-        size: sizes.large,
-        iconPosition: iconPositions.side,
+
+      text__size_default__icon_left: {
+        size: sizes.default,
+        iconPosition: iconPositions.left,
+      },
+
+      text__size_default__icon_right: {
+        size: sizes.default,
+        iconPosition: iconPositions.right,
       },
 
       text__size_large__icon_left: {
@@ -379,16 +380,6 @@ export function getTextStyle(options: {
         iconPosition: iconPositions.right,
       },
 
-      text__size_block__icon_leftOrRight: {
-        size: sizes.block,
-        iconPosition: [iconPositions.left, iconPositions.right],
-      },
-
-      text__size_block__icon_side: {
-        size: sizes.block,
-        iconPosition: iconPositions.side,
-      },
-
       text__size_small__icon_left: {
         size: sizes.small,
         iconPosition: iconPositions.left,
@@ -397,11 +388,6 @@ export function getTextStyle(options: {
       text__size_small__icon_right: {
         size: sizes.small,
         iconPosition: iconPositions.right,
-      },
-
-      text__size_small__icon_side: {
-        size: sizes.small,
-        iconPosition: iconPositions.side,
       },
     }
   );
@@ -437,8 +423,12 @@ export function getIconStyle(options: {
     {
       icon: true,
 
-      icon__size_largeOrBlock: {
-        size: [sizes.large, sizes.block],
+      icon__size_default: {
+        size: sizes.default,
+      },
+
+      icon__size_large: {
+        size: sizes.large,
       },
 
       icon__size_small: {

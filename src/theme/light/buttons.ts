@@ -31,7 +31,7 @@ export const buttonTheme: ButtonTheme = {
       disabled: Colors.neutrals.light.neutral4,
     },
     text: {
-      default: Colors.neutrals.light.neutral4,
+      default: Colors.common.black,
       pressed: Colors.neutrals.light.neutral5,
       disabled: Colors.neutrals.light.neutral4,
     },

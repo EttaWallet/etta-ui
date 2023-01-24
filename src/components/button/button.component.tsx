@@ -34,7 +34,7 @@ const ButtonComponent = React.forwardRef<View, ButtonProps>((props, ref) => {
     style,
     icon,
     iconPosition = icon ? buttonVars.iconPositions.left : undefined,
-    size = buttonVars.sizes.large,
+    size = buttonVars.sizes.default,
     appearance = buttonVars.appearances.filled,
     disabled,
     textStyle,
@@ -82,9 +82,6 @@ const ButtonComponent = React.forwardRef<View, ButtonProps>((props, ref) => {
       {...touchableOpacityProps}
     >
       {icon && iconPosition === buttonVars.iconPositions.left ? (
-        <Icon name={icon} style={buttonIconStyle} />
-      ) : null}
-      {icon && iconPosition === buttonVars.iconPositions.side ? (
         <Icon name={icon} style={buttonIconStyle} />
       ) : null}
       <Text style={[buttonTextStyle, textStyle]}>{title}</Text>
