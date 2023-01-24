@@ -1,4 +1,4 @@
-// stories/Button.stories.tsx
+// stories/button.stories.tsx
 import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Button } from 'etta-ui';
@@ -16,7 +16,7 @@ const scrollViewWithPaddingStyle: ViewStyle = {
 };
 
 export default {
-  title: 'components/Button',
+  title: 'Buttons',
   component: Button,
   decorators: [
     (Story) => (
