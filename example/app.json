@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "example",
+    "name": "EttaUIShowcase",
     "slug": "example",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,9 +18,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.etta.uishowcase"
     },
     "android": {
+      "package": "com.etta.uishowcase",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -28,6 +31,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-community-flipper"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d955883b-05e1-4358-a714-cc139f6bad43"
+      }
     }
   }
 }

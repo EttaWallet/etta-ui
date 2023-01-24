@@ -9,8 +9,7 @@ import {
 } from 'react-native';
 import { buttonVars } from './button.vars';
 import { getContainerStyle, getIconStyle, getTextStyle } from './button.style';
-import { useTheme, Icon } from 'etta-ui';
-import type { ValueOf } from '../../utils';
+import { useTheme, Icon, ValueOf } from 'etta-ui';
 
 export interface ButtonProps extends TouchableOpacityProps {
   title: string;

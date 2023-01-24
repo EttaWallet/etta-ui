@@ -2,8 +2,7 @@ import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import type { Theme } from '../../theme';
 import { createThemedStyleSheet } from '../../theme';
 import { buttonVars } from './button.vars';
-import type { ValueOf } from '../../utils';
-import { TypographyPresets } from 'etta-ui';
+import { TypographyPresets, ValueOf } from 'etta-ui';
 import { selectStyles } from '../../utils/select-styles';
 
 const { sizes, iconPositions, appearances } = buttonVars;
@@ -61,24 +60,24 @@ const getStyles = createThemedStyleSheet((theme) => ({
   },
 
   container__size_largeOrBlock__icon_noneOrSide: {
-    paddingLeft: 31,
-    paddingRight: 31,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 
   // --- CONTAINER SIZE LARGE ---
   container__size_large: {
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: 19,
+    paddingBottom: 19,
   },
 
   container__size_large__icon_left: {
-    paddingLeft: 15,
-    paddingRight: 31,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 
   container__size_large__icon_right: {
-    paddingLeft: 31,
-    paddingRight: 15,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 
   // --- CONTAINER SIZE BLOCK ---
@@ -124,21 +123,19 @@ const getStyles = createThemedStyleSheet((theme) => ({
   text: {
     ...TypographyPresets.Header5, // fontsize: 18, line-height: 25.2. Shouldn't line-height be equal to fontSize?
     textAlign: 'center',
-    marginTop: 2,
-    marginBottom: 2,
-    lineHeight: undefined,
+    lineHeight: 20,
   },
 
   text__size_large__icon_side: {
-    marginLeft: 16,
+    marginLeft: 15,
   },
 
   text__size_large__icon_left: {
-    marginLeft: 24,
+    marginLeft: 15,
   },
 
   text__size_large__icon_right: {
-    marginRight: 24,
+    marginRight: 15,
   },
 
   text__size_block__icon_leftOrRight: {

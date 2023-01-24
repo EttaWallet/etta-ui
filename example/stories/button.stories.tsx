@@ -1,21 +1,15 @@
 // stories/Button.stories.tsx
 import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { Button, ValueOf } from 'etta-ui';
-import { capitalize } from '../utils/capitalize';
+import { Button } from 'etta-ui';
 import type { ViewStyle } from 'react-native';
 import { ScrollView } from 'react-native';
 
-const styleWithMargin: ViewStyle = {
-  marginBottom: 16,
-  marginRight: 32,
-};
-
 const scrollViewWithPaddingStyle: ViewStyle = {
-  padding: 16,
   flexDirection: 'row',
-  flexWrap: 'wrap',
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center',
 };
 
 export default {
@@ -29,74 +23,37 @@ export default {
       />
     ),
   ],
+  argTypes: {
+    appearance: {
+      options: ['filled', 'outline', 'transparent'],
+      control: { type: 'radio' },
+    },
+    size: {
+      options: ['large', 'small', 'block'],
+      control: { type: 'radio' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
+    icon: {
+      control: { type: 'text' },
+    },
+    iconPosition: {
+      options: ['left', 'right', 'side'],
+      control: { type: 'radio' },
+    },
+    onPress: { action: 'pressed' },
+  },
 } as ComponentMeta<typeof Button>;
 
-export const Filled: ComponentStory<typeof Button> = () =>
-  generateButtonStoryStyle(Button.appearances.filled, Button.sizes.large);
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-const generateButtonStoryStyle = (
-  appearance: ValueOf<typeof Button.appearances>,
-  size: ValueOf<typeof Button.sizes>
-) => {
-  const title = `${capitalize(size)} + ${capitalize(appearance)}`;
-  return (
-    <>
-      <Button
-        testID={`${appearance}-default`}
-        appearance={appearance}
-        style={styleWithMargin}
-        title={title}
-        size={size}
-      />
+export const ButtonDemo = Template.bind({});
 
-      <Button
-        testID={`${appearance}-default`}
-        icon="icon-arrow-left"
-        appearance={appearance}
-        size={size}
-        onPress={action('clicked-text')}
-        style={styleWithMargin}
-        title={title}
-      />
-      <Button
-        testID={`${appearance}-default`}
-        icon="icon-arrow-right"
-        size={size}
-        iconPosition="right"
-        appearance={appearance}
-        onPress={action('clicked-text')}
-        style={styleWithMargin}
-        title={title}
-      />
-      <Button
-        testID={`${appearance}-default`}
-        icon="icon-arrow-left"
-        size={size}
-        iconPosition="side"
-        appearance={appearance}
-        onPress={action('clicked-text')}
-        style={styleWithMargin}
-        title={title}
-      />
-      <Button
-        size={size}
-        testID={`${appearance}-disabled`}
-        appearance={appearance}
-        onPress={action('clicked-text')}
-        disabled={true}
-        style={styleWithMargin}
-        title={title}
-      />
-      <Button
-        size={size}
-        testID={`${appearance}-disabled`}
-        appearance={appearance}
-        icon="icon-wallet"
-        onPress={action('clicked-text')}
-        disabled={true}
-        style={styleWithMargin}
-        title={title}
-      />
-    </>
-  );
+ButtonDemo.args = {
+  title: 'I am a button',
+  appearance: 'filled',
+  size: 'large',
+  icon: 'icon-arrow-up',
+  iconPosition: 'left',
 };
