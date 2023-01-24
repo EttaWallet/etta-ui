@@ -1,4 +1,4 @@
-# etta-ui
+# Etta UI Lib
 
 React Native UI Kit for the Bitcoin Design Guide
 
@@ -11,11 +11,11 @@ npm install etta-ui
 ## Usage
 
 ```js
-import { multiply } from 'etta-ui';
+import { Button } from 'etta-ui';
 
-// ...
+// documentation still under development
 
-const result = await multiply(3, 7);
+
 ```
 
 ## Contributing
@@ -27,5 +27,3 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 MIT
 
 ---
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
