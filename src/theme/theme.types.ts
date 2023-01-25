@@ -50,6 +50,12 @@ export interface ChipTheme {
   selectedBackground: string;
   selectedText: string;
 }
+
+export interface KeyPadTheme {
+  digitColor: string;
+  backspaceColor: string;
+}
+
 export interface Theme {
   type: 'dark' | 'light' | string;
   buttons: ButtonTheme;
@@ -58,6 +64,7 @@ export interface Theme {
   text: TextTheme;
   switch: SwitchTheme;
   chip: ChipTheme;
+  keypad: KeyPadTheme;
 }
 export interface DefaultExtendedTheme {}
 export type ExtendedTheme<T = DefaultExtendedTheme> = T & Theme;

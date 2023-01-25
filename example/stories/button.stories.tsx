@@ -16,7 +16,7 @@ const scrollViewWithPaddingStyle: ViewStyle = {
 };
 
 export default {
-  title: 'Button',
+  title: 'Buttons',
   component: Button,
   decorators: [
     (Story) => (

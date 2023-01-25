@@ -29,4 +29,8 @@ export let LIGHT_THEME: Theme = {
     selectedText: Colors.common.white,
     selectedBorderColor: Colors.neutrals.light.neutral6,
   },
+  keypad: {
+    digitColor: Colors.common.black,
+    backspaceColor: Colors.red.base,
+  },
 };
