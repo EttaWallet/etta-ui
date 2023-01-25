@@ -37,4 +37,9 @@ export let DARK_THEME: Theme = {
     backgroundDefault: Colors.common.white,
     backgroundSelected: Colors.orange.base,
   },
+  modal: {
+    background: Colors.neutrals.light.neutral7,
+    textMessage: Colors.common.white,
+    textTitle: Colors.common.white,
+  },
 };

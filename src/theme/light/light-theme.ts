@@ -37,4 +37,9 @@ export let LIGHT_THEME: Theme = {
     backgroundDefault: Colors.neutrals.light.neutral4,
     backgroundSelected: Colors.orange.base,
   },
+  modal: {
+    background: Colors.common.white,
+    textMessage: Colors.neutrals.light.neutral7,
+    textTitle: Colors.common.black,
+  },
 };

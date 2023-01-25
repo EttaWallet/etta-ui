@@ -61,6 +61,12 @@ export interface PaginationTheme {
   backgroundSelected: string;
 }
 
+export interface ModalTheme {
+  background: string;
+  textTitle: string;
+  textMessage: string;
+}
+
 export interface Theme {
   type: 'dark' | 'light' | string;
   buttons: ButtonTheme;
@@ -71,6 +77,7 @@ export interface Theme {
   chip: ChipTheme;
   keypad: KeyPadTheme;
   pagination: PaginationTheme;
+  modal: ModalTheme;
 }
 export interface DefaultExtendedTheme {}
 export type ExtendedTheme<T = DefaultExtendedTheme> = T & Theme;
