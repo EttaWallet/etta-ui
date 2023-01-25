@@ -56,6 +56,11 @@ export interface KeyPadTheme {
   backspaceColor: string;
 }
 
+export interface PaginationTheme {
+  backgroundDefault: string;
+  backgroundSelected: string;
+}
+
 export interface Theme {
   type: 'dark' | 'light' | string;
   buttons: ButtonTheme;
@@ -65,6 +70,7 @@ export interface Theme {
   switch: SwitchTheme;
   chip: ChipTheme;
   keypad: KeyPadTheme;
+  pagination: PaginationTheme;
 }
 export interface DefaultExtendedTheme {}
 export type ExtendedTheme<T = DefaultExtendedTheme> = T & Theme;

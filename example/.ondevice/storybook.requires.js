@@ -43,6 +43,7 @@ const getStories = () => {
     require('../stories/chip.stories.tsx'),
     require('../stories/input.stories.tsx'),
     require('../stories/keypad.stories.tsx'),
+    require('../stories/pagination.stories.tsx'),
     require('../stories/switch.stories.tsx'),
     require('../stories/textarea.stories.tsx'),
   ];

@@ -33,4 +33,8 @@ export let DARK_THEME: Theme = {
     digitColor: Colors.common.white,
     backspaceColor: Colors.red.base,
   },
+  pagination: {
+    backgroundDefault: Colors.common.white,
+    backgroundSelected: Colors.orange.base,
+  },
 };

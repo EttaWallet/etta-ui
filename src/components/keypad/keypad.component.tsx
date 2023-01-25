@@ -67,7 +67,7 @@ const NumericKeypad = (props: Props) => {
           onLongPress={props.onBackspaceLongPress}
         >
           <View style={styles.digit}>
-            <Icon name="icon-arrow-left" />
+            <Icon name="icon-clear-character" />
           </View>
         </BorderlessButton>
       </View>
