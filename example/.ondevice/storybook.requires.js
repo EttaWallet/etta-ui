@@ -40,6 +40,7 @@ try {
 const getStories = () => {
   return [
     require('../stories/button.stories.tsx'),
+    require('../stories/chip.stories.tsx'),
     require('../stories/input.stories.tsx'),
     require('../stories/switch.stories.tsx'),
     require('../stories/textarea.stories.tsx'),

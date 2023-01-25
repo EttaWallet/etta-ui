@@ -21,4 +21,12 @@ export let LIGHT_THEME: Theme = {
     thumbColor: Colors.neutrals.light.neutral3,
     ios_backgroundColor: Colors.neutrals.light.neutral4,
   },
+  chip: {
+    borderColor: Colors.neutrals.light.neutral5,
+    background: Colors.common.white,
+    text: Colors.common.black,
+    selectedBackground: Colors.neutrals.light.neutral6,
+    selectedText: Colors.common.white,
+    selectedBorderColor: Colors.neutrals.light.neutral6,
+  },
 };

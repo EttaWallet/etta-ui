@@ -42,6 +42,14 @@ export interface SwitchTheme {
   ios_backgroundColor: string;
 }
 
+export interface ChipTheme {
+  borderColor: string;
+  background: string;
+  text: string;
+  selectedBorderColor: string;
+  selectedBackground: string;
+  selectedText: string;
+}
 export interface Theme {
   type: 'dark' | 'light' | string;
   buttons: ButtonTheme;
@@ -49,6 +57,7 @@ export interface Theme {
   background: BackgroundTheme;
   text: TextTheme;
   switch: SwitchTheme;
+  chip: ChipTheme;
 }
 export interface DefaultExtendedTheme {}
 export type ExtendedTheme<T = DefaultExtendedTheme> = T & Theme;

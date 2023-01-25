@@ -21,4 +21,12 @@ export let DARK_THEME: Theme = {
     thumbColor: Colors.neutrals.light.neutral3,
     ios_backgroundColor: Colors.neutrals.light.neutral4,
   },
+  chip: {
+    borderColor: Colors.common.white,
+    background: Colors.common.black,
+    text: Colors.common.white,
+    selectedBackground: Colors.orange.base,
+    selectedText: Colors.common.white,
+    selectedBorderColor: Colors.orange.base,
+  },
 };

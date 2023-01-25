@@ -4,7 +4,7 @@ import { TypographyPresets } from 'etta-ui';
 
 export const getTextAreaStyles = createThemedStyleSheet((theme) => ({
   container: {
-    ...TypographyPresets.Body3,
+    ...TypographyPresets.Body5,
     borderRadius: 5,
     paddingVertical: 16,
     paddingHorizontal: 20,
