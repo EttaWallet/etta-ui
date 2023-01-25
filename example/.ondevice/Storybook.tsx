@@ -4,7 +4,10 @@ import './doctools';
 import './storybook.requires';
 import * as Font from 'expo-font';
 
-const StorybookUI = getStorybookUI({});
+const StorybookUI = getStorybookUI({
+  shouldPersistSelection: true,
+  tabOpen: 0,
+});
 
 let customFonts = {
   'Inter-SemiBold': require('../../fonts/Inter-SemiBold.ttf'),

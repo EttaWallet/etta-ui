@@ -13,4 +13,12 @@ export let DARK_THEME: Theme = {
   text: {
     base: Colors.common.white,
   },
+  switch: {
+    trackColor: {
+      false: Colors.neutrals.light.neutral4,
+      true: Colors.orange.base,
+    },
+    thumbColor: Colors.neutrals.light.neutral3,
+    ios_backgroundColor: Colors.neutrals.light.neutral4,
+  },
 };

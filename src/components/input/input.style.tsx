@@ -2,7 +2,7 @@ import { createThemedStyleSheet, Theme } from '../../theme';
 import { selectStyles } from '../../utils/select-styles';
 import { TypographyPresets } from 'etta-ui';
 
-export const getTextFieldStyles = createThemedStyleSheet((theme) => ({
+export const getInputFieldStyles = createThemedStyleSheet((theme) => ({
   container: {
     ...TypographyPresets.Body3,
     borderRadius: 5,
@@ -37,9 +37,9 @@ export function getContainerStyle(options: {
   isFocused: boolean;
 }) {
   let { isError, isFocused, isDisabled, theme } = options;
-  const textFieldStyles = getTextFieldStyles(theme);
+  const inputFieldStyles = getInputFieldStyles(theme);
   return selectStyles(
-    textFieldStyles,
+    inputFieldStyles,
     {
       isError,
       isFocused,

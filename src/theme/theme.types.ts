@@ -36,12 +36,19 @@ export interface TextTheme {
   base: string;
 }
 
+export interface SwitchTheme {
+  trackColor: object;
+  thumbColor: string;
+  ios_backgroundColor: string;
+}
+
 export interface Theme {
   type: 'dark' | 'light' | string;
   buttons: ButtonTheme;
   inputField: InputFieldTheme;
   background: BackgroundTheme;
   text: TextTheme;
+  switch: SwitchTheme;
 }
 export interface DefaultExtendedTheme {}
 export type ExtendedTheme<T = DefaultExtendedTheme> = T & Theme;
