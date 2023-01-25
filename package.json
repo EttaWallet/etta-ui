@@ -160,7 +160,6 @@
     ]
   },
   "dependencies": {
-    "react-native-gesture-handler": "^2.9.0",
-    "react-native-svg": "^13.7.0"
+    "react-native-gesture-handler": "^2.9.0"
   }
 }
