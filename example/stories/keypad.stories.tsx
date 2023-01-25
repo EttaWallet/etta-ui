@@ -4,6 +4,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { KeyPad } from 'etta-ui';
 import type { ViewStyle } from 'react-native';
 import { ScrollView } from 'react-native';
+import { action } from '@storybook/addon-actions';
 
 const scrollViewWithPaddingStyle: ViewStyle = {
   flexDirection: 'row',
@@ -28,3 +29,7 @@ export default {
 const Template: ComponentStory<typeof KeyPad> = (args) => <KeyPad {...args} />;
 
 export const NumericKeypad = Template.bind({});
+
+NumericKeypad.args = {
+  onDigitPress: action('clicked-digit'),
+};

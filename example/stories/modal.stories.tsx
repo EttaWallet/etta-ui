@@ -57,7 +57,7 @@ TwoButtonModal.args = {
   },
   cancelButton: {
     title: 'Cancel',
-    onPress: action('clicked-canel-button'),
+    onPress: action('clicked-cancel-button'),
   },
 };
 
