@@ -8,9 +8,9 @@ const getStyles = createThemedStyleSheet((theme: Theme) => ({
     flexDirection: 'row',
   },
   item: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
+    width: 10,
+    height: 10,
+    borderRadius: 100,
   },
   item__default: {
     backgroundColor: theme.pagination.backgroundDefault,
