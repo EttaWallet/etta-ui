@@ -67,6 +67,11 @@ export interface ModalTheme {
   textMessage: string;
 }
 
+export interface ListItemTheme {
+  background: string;
+  bottomBorderColor: string;
+}
+
 export interface Theme {
   type: 'dark' | 'light' | string;
   buttons: ButtonTheme;
@@ -78,6 +83,7 @@ export interface Theme {
   keypad: KeyPadTheme;
   pagination: PaginationTheme;
   modal: ModalTheme;
+  listItem: ListItemTheme;
 }
 export interface DefaultExtendedTheme {}
 export type ExtendedTheme<T = DefaultExtendedTheme> = T & Theme;

@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
-import { Icon } from 'etta-ui';
 import { getKeyPadStyles } from './keypad.style';
-import { useTheme } from 'etta-ui';
+import { useTheme, Icon } from 'etta-ui';
 
 interface Props {
   onDigitPress: (digit: number) => void;

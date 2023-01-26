@@ -42,4 +42,8 @@ export let DARK_THEME: Theme = {
     textMessage: Colors.common.white,
     textTitle: Colors.common.white,
   },
+  listItem: {
+    background: Colors.common.black,
+    bottomBorderColor: Colors.neutrals.light.neutral2,
+  },
 };

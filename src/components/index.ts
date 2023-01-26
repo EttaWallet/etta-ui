@@ -3,6 +3,7 @@ export * from './chip';
 export * from './icon';
 export * from './input';
 export * from './keypad';
+export * from './list-item';
 export * from './modal';
 export * from './pagination';
 export * from './switch';

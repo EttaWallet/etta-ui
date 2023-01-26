@@ -42,4 +42,8 @@ export let LIGHT_THEME: Theme = {
     textMessage: Colors.neutrals.light.neutral7,
     textTitle: Colors.common.black,
   },
+  listItem: {
+    background: Colors.common.white,
+    bottomBorderColor: Colors.neutrals.light.neutral4,
+  },
 };
