@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
-import { BorderlessButton } from 'react-native-gesture-handler';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { Icon } from 'etta-ui';
 import { getKeyPadStyles } from './keypad.style';
 import { useTheme } from 'etta-ui';
@@ -24,11 +23,11 @@ const DigitButton = ({
   const styles = getKeyPadStyles(theme);
   const onPress = () => onDigitPress(digit);
   return (
-    <BorderlessButton borderless={true} onPress={onPress}>
+    <TouchableOpacity accessibilityLabel={`number-${digit}`} onPress={onPress}>
       <Text allowFontScaling={false} style={styles.digit}>
         {digit}
       </Text>
-    </BorderlessButton>
+    </TouchableOpacity>
   );
 };
 
@@ -54,22 +53,22 @@ const NumericKeypad = (props: Props) => {
       </View>
       <View style={styles.row}>
         {props.decimalSeparator && props.onDecimalPress ? (
-          <BorderlessButton borderless={true} onPress={props.onDecimalPress}>
+          <TouchableOpacity onPress={props.onDecimalPress}>
             <Text style={styles.digit}>{props.decimalSeparator}</Text>
-          </BorderlessButton>
+          </TouchableOpacity>
         ) : (
           <View style={styles.digit} />
         )}
         <DigitButton digit={0} onDigitPress={props.onDigitPress} />
-        <BorderlessButton
-          borderless={true}
+        <TouchableOpacity
+          accessibilityLabel="backspace"
           onPress={props.onBackspacePress}
           onLongPress={props.onBackspaceLongPress}
         >
           <View style={styles.digit}>
             <Icon name="icon-clear-character" />
           </View>
-        </BorderlessButton>
+        </TouchableOpacity>
       </View>
     </View>
   );
