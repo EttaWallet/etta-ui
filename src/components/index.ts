@@ -6,5 +6,6 @@ export * from './keypad';
 export * from './list-item';
 export * from './modal';
 export * from './pagination';
+export * from './settings-item';
 export * from './switch';
 export * from './textarea';

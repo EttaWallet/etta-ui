@@ -72,6 +72,13 @@ export interface ListItemTheme {
   bottomBorderColor: string;
 }
 
+export interface SettingsItemTheme {
+  titleColor: string;
+  valueColor: string;
+  valueActionableColor: string;
+  detailsColor: string;
+}
+
 export interface Theme {
   type: 'dark' | 'light' | string;
   buttons: ButtonTheme;
@@ -84,6 +91,7 @@ export interface Theme {
   pagination: PaginationTheme;
   modal: ModalTheme;
   listItem: ListItemTheme;
+  settingsItem: SettingsItemTheme;
 }
 export interface DefaultExtendedTheme {}
 export type ExtendedTheme<T = DefaultExtendedTheme> = T & Theme;

@@ -46,4 +46,10 @@ export let DARK_THEME: Theme = {
     background: Colors.common.black,
     bottomBorderColor: Colors.neutrals.light.neutral2,
   },
+  settingsItem: {
+    titleColor: Colors.common.white,
+    valueColor: Colors.neutrals.light.neutral8,
+    valueActionableColor: Colors.green.base,
+    detailsColor: Colors.neutrals.light.neutral7,
+  },
 };

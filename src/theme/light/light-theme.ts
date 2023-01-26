@@ -46,4 +46,10 @@ export let LIGHT_THEME: Theme = {
     background: Colors.common.white,
     bottomBorderColor: Colors.neutrals.light.neutral4,
   },
+  settingsItem: {
+    titleColor: Colors.common.black,
+    valueColor: Colors.neutrals.light.neutral8,
+    valueActionableColor: Colors.green.base,
+    detailsColor: Colors.neutrals.light.neutral7,
+  },
 };
