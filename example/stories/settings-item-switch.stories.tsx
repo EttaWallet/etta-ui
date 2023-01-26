@@ -28,7 +28,7 @@ export default {
 const Template: ComponentStory<typeof SettingsItemSwitch> = (args) => {
   const [switchValue, setSwitchValue] = useState(false);
 
-  const handleSwitchToggle = (switchValue) => {
+  const handleSwitchToggle = () => {
     setSwitchValue(switchValue);
   };
 
