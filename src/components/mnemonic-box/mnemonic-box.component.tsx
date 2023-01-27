@@ -9,30 +9,20 @@ export enum RecoveryPhraseContainerMode {
   INPUT = 'INPUT',
 }
 
-export enum RecoveryPhraseType {
-  BACKUP_KEY = 'BACKUP_KEY',
-}
-
 type MnemonicBoxProps = {
   value: string | null;
   mode: RecoveryPhraseContainerMode;
-  type: RecoveryPhraseType;
   index?: number;
   showCopy?: boolean;
   style?: ViewStyle;
   onChangeText?: (value: string) => void;
-  includeHeader?: boolean;
-  header: string | null;
 };
 
 const MnemonicBoxComponent = ({
   value: words,
   mode,
   style,
-  type,
-  includeHeader,
   onChangeText,
-  header,
 }: MnemonicBoxProps) => {
   const onPhraseInputChange = (value: string) => {
     if (onChangeText) {
@@ -54,13 +44,6 @@ const MnemonicBoxComponent = ({
   );
   return (
     <View style={style}>
-      <View style={styles.headerContainer}>
-        {type === RecoveryPhraseType.BACKUP_KEY && includeHeader !== false && (
-          <View style={styles.writeDownKeyContainer}>
-            <Text style={styles.writeDownKey}>{header}</Text>
-          </View>
-        )}
-      </View>
       {mode === RecoveryPhraseContainerMode.READONLY && (
         <BigList
           data={mnemonicArray}
