@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "etta-ui": ["./src/index"]
+      "etta-ui": ["./src/index"],
+      // "react": [ "./node_modules/@types/react" ]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -10,7 +11,7 @@
     "importsNotUsedAsValues": "error",
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": ["esnext"],
+    "lib": ["esnext", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,

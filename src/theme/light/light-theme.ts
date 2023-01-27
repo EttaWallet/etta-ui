@@ -52,4 +52,8 @@ export let LIGHT_THEME: Theme = {
     valueActionableColor: Colors.orange.base,
     detailsColor: Colors.neutrals.light.neutral7,
   },
+  mnemonicBox: {
+    containerBackground: Colors.neutrals.light.neutral3,
+    containerBorderColor: Colors.neutrals.light.neutral3,
+  },
 };

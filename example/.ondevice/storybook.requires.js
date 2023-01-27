@@ -44,6 +44,7 @@ const getStories = () => {
     require('../stories/input.stories.tsx'),
     require('../stories/keypad.stories.tsx'),
     require('../stories/list-item.stories.tsx'),
+    require('../stories/mnemonic-box.stories.tsx'),
     require('../stories/modal.stories.tsx'),
     require('../stories/pagination.stories.tsx'),
     require('../stories/settings-item-switch.stories.tsx'),

@@ -79,6 +79,11 @@ export interface SettingsItemTheme {
   detailsColor: string;
 }
 
+export interface MnemonicBoxTheme {
+  containerBackground: string;
+  containerBorderColor: string;
+}
+
 export interface Theme {
   type: 'dark' | 'light' | string;
   buttons: ButtonTheme;
@@ -92,6 +97,7 @@ export interface Theme {
   modal: ModalTheme;
   listItem: ListItemTheme;
   settingsItem: SettingsItemTheme;
+  mnemonicBox: MnemonicBoxTheme;
 }
 export interface DefaultExtendedTheme {}
 export type ExtendedTheme<T = DefaultExtendedTheme> = T & Theme;

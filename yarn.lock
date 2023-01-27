@@ -1967,6 +1967,10 @@
     prompts "^2.4.0"
     semver "^6.3.0"
 
+"@react-native-community/clipboard@git+https://github.com/crukundo/react-native-clipboard#5afb848":
+  version "1.2.3"
+  resolved "git+https://github.com/crukundo/react-native-clipboard#5afb8484215495bce475efb8da24e65339e21164"
+
 "@react-native-community/eslint-config@^3.0.2":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-config/-/eslint-config-3.2.0.tgz#42f677d5fff385bccf1be1d3b8faa8c086cf998d"
