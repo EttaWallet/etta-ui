@@ -25,7 +25,18 @@ export const getMnemonicBoxStyles = createThemedStyleSheet((theme) => ({
     padding: 16,
   },
   phraseText: {
-    ...TypographyPresets.Body2,
+    ...TypographyPresets.Body3,
+    lineHeight: 18,
+  },
+  phraseWrapper: {
+    flexDirection: 'row',
+    paddingBottom: 6,
+  },
+  phraseIndex: {
+    ...TypographyPresets.Body3,
+    lineHeight: 18,
+    opacity: 0.25,
+    paddingRight: 10, // distance from index + 1 to text
   },
   phraseInputText: {
     ...TypographyPresets.Body2,

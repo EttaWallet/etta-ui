@@ -161,6 +161,7 @@
   },
   "dependencies": {
     "@react-native-community/clipboard": "git+https://github.com/crukundo/react-native-clipboard#5afb848",
+    "react-native-big-list": "^1.6.0",
     "react-native-gesture-handler": "^2.9.0"
   }
 }

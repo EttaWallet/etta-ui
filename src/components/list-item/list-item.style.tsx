@@ -5,7 +5,6 @@ export const getListItemStyles = createThemedStyleSheet((theme) => ({
     backgroundColor: theme.listItem.background,
   },
   innerView: {
-    paddingVertical: 16,
     borderBottomWidth: 1,
     borderBottomColor: theme.listItem.bottomBorderColor,
     marginLeft: 16,

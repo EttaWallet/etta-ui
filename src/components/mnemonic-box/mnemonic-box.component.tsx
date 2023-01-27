@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Text, TextInput, View, ViewStyle } from 'react-native';
-import { useTheme } from 'etta-ui';
+import BigList from 'react-native-big-list';
+import { ListItem, useTheme } from 'etta-ui';
 import { getMnemonicBoxStyles } from './mnemonic-box.style';
 
 export enum RecoveryPhraseContainerMode {
@@ -40,6 +41,17 @@ const MnemonicBoxComponent = ({
   };
   const theme = useTheme();
   const styles = getMnemonicBoxStyles(theme);
+  const mnemonicArray = words?.split(' '); // split the string of mnemonics into words.
+
+  // how each word in seed will be rendered
+  const renderItem = ({ item, index }: { item: string; index: number }) => (
+    <ListItem key={index}>
+      <View style={styles.phraseWrapper}>
+        <Text style={styles.phraseIndex}>{index + 1}.</Text>
+        <Text style={styles.phraseText}>{item}</Text>
+      </View>
+    </ListItem>
+  );
   return (
     <View style={style}>
       <View style={styles.headerContainer}>
@@ -50,10 +62,12 @@ const MnemonicBoxComponent = ({
         )}
       </View>
       {mode === RecoveryPhraseContainerMode.READONLY && (
-        /* @TODO: Convert this container into a well number list of words in 2 columns and 6 rows */
-        <View style={styles.phraseContainer}>
-          {!!words && <Text style={styles.phraseText}>{words}</Text>}
-        </View>
+        <BigList
+          data={mnemonicArray}
+          numColumns={2}
+          renderItem={renderItem}
+          itemHeight={50}
+        />
       )}
       {mode === RecoveryPhraseContainerMode.INPUT && (
         <View style={styles.phraseContainer}>

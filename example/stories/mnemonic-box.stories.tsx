@@ -22,9 +22,9 @@ export default {
   component: MnemonicBox,
   parameters: {
     notes: `
-     # Here I can add some markdown
+     ### Mnemonic Box
      
-     Put a full new line between each element.
+     A component to show or input mnemonic/seed.
     `,
   },
   decorators: [
@@ -73,7 +73,7 @@ export const ReadOnlyContainer = Template.bind({});
 
 ReadOnlyContainer.args = {
   includeHeader: true,
-  header: 'Your recovery phrase',
+  header: 'Write down and number these words',
   value: mnemonic,
   mode: RecoveryPhraseContainerMode.READONLY,
   type: RecoveryPhraseType.BACKUP_KEY,
