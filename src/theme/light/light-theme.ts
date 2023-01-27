@@ -49,7 +49,7 @@ export let LIGHT_THEME: Theme = {
   settingsItem: {
     titleColor: Colors.common.black,
     valueColor: Colors.neutrals.light.neutral8,
-    valueActionableColor: Colors.green.base,
+    valueActionableColor: Colors.orange.base,
     detailsColor: Colors.neutrals.light.neutral7,
   },
 };

@@ -62,33 +62,17 @@ const SettingsItemTextValueComponent = ({
               >
                 {value}
               </Text>
-              <Icon
-                name="icon-caret-right"
-                // eslint-disable-next-line react-native/no-inline-styles
-                style={{
-                  fontSize: 20,
-                  color: isValueActionable ? '#27AE60' : undefined,
-                }}
-              />
-              <Icon
-                name="icon-caret-right"
-                // eslint-disable-next-line react-native/no-inline-styles
-                style={{
-                  fontSize: 20,
-                  color: isValueActionable ? '#27AE60' : undefined,
-                }}
-              />
+              {showChevron && (
+                <Icon
+                  name="icon-caret-right"
+                  // eslint-disable-next-line react-native/no-inline-styles
+                  style={{
+                    fontSize: 20,
+                    color: isValueActionable ? '#F7931A' : undefined,
+                  }}
+                />
+              )}
             </>
-          )}
-          {showChevron && (
-            <Icon
-              name="icon-caret-right"
-              // eslint-disable-next-line react-native/no-inline-styles
-              style={{
-                fontSize: 20,
-                color: isValueActionable ? '#27AE60' : undefined,
-              }}
-            />
           )}
         </View>
       </View>

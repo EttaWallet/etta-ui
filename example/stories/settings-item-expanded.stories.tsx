@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import { SettingsItemTextValue } from 'etta-ui';
+import { SettingsExpandedItem } from 'etta-ui';
 import type { ViewStyle } from 'react-native';
 import { ScrollView } from 'react-native';
 import { action } from '@storybook/addon-actions';
@@ -14,8 +14,8 @@ const scrollViewWithPaddingStyle: ViewStyle = {
 };
 
 export default {
-  title: 'Settings/TextValue',
-  component: SettingsItemTextValue,
+  title: 'Settings/ExpandedItem',
+  component: SettingsExpandedItem,
   decorators: [
     (Story) => (
       <ScrollView
@@ -28,28 +28,21 @@ export default {
     title: {
       control: { type: 'text' },
     },
-    value: {
+    details: {
       control: { type: 'text' },
-    },
-    showChevron: {
-      control: { type: 'boolean' },
-    },
-    isValueActionable: {
-      control: { type: 'boolean' },
     },
     onPress: { action: 'pressed' },
   },
-} as ComponentMeta<typeof SettingsItemTextValue>;
+} as ComponentMeta<typeof SettingsExpandedItem>;
 
-const Template: ComponentStory<typeof SettingsItemTextValue> = (args) => {
-  return <SettingsItemTextValue {...args} />;
+const Template: ComponentStory<typeof SettingsExpandedItem> = (args) => {
+  return <SettingsExpandedItem {...args} />;
 };
 export const Example = Template.bind({});
 
 Example.args = {
-  title: 'Language',
-  value: 'Swahili',
-  showChevron: true,
-  isValueActionable: false,
+  title: 'On-the-fly channel creation',
+  details:
+    'Channel creation fees apply when you receive a payment over lightning and a new channel needs to be created.',
   onPress: action('clicked-setting-item'),
 };

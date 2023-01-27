@@ -9,8 +9,8 @@ export const getSettingsItemStyles = createThemedStyleSheet((theme) => ({
     paddingRight: 16,
   },
   left: {
-    justifyContent: 'center',
-    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
   title: {
     ...TypographyPresets.Body3,
@@ -34,9 +34,5 @@ export const getSettingsItemStyles = createThemedStyleSheet((theme) => ({
   right: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  input: {
-    justifyContent: 'flex-end',
-    paddingLeft: 16,
   },
 }));
