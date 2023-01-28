@@ -10,7 +10,7 @@ const scrollViewWithPaddingStyle: ViewStyle = {
   flex: 1,
   alignItems: 'center',
   justifyContent: 'center',
-  marginHorizontal: 32,
+  marginHorizontal: 16,
   marginTop: 100,
 };
 
@@ -33,7 +33,16 @@ export default {
     ),
   ],
   argTypes: {
-    value: {
+    seed: {
+      control: { type: 'text' },
+    },
+    numMnemonicChoices: {
+      control: { type: 'number' },
+    },
+    checkingDuration: {
+      control: { type: 'number' },
+    },
+    resetTitle: {
       control: { type: 'text' },
     },
   },
@@ -43,7 +52,14 @@ const mnemonic =
   'yam flower delight seed cat note gritty pirate vault bean time loud';
 
 const Template: ComponentStory<typeof MnemonicQuiz> = (args) => {
-  return <MnemonicQuiz {...args} seed={mnemonic} resetTitle="Reset" />;
+  return <MnemonicQuiz {...args} />;
 };
 
 export const Backup = Template.bind({});
+
+Backup.args = {
+  seed: mnemonic,
+  numMnemonicChoices: 8,
+  checkingDuration: 1.8 * 1000,
+  resetTitle: 'Start over',
+};

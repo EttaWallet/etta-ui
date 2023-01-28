@@ -23,12 +23,15 @@ type MnemonicQuizProps = {
   onPassed: () => void;
   onFail: () => void;
   showError: any;
+  numMnemonicChoices: number; // number of buttons to display
+  checkingDuration: number; // e.g 1800 or math like 1.8 * 1000
 };
 
 // miliseconds to wait until showing success or failure
 const CHECKING_DURATION = 1.8 * 1000;
 
-const MNEMONIC_BUTTONS_TO_DISPLAY = 4;
+// number of mnemonic choices to show user
+const MNEMONIC_BUTTONS_TO_DISPLAY = 6;
 
 const getOrdinal = (n: number) => {
   let ord = 'th';
@@ -49,6 +52,8 @@ const MnemonicQuizComponent = ({
   resetTitle,
   onPassed,
   onFail,
+  numMnemonicChoices,
+  checkingDuration,
 }: MnemonicQuizProps) => {
   // set component init State
   const [mnemonicLength, setMnemonicLength] = useState(0);
@@ -121,7 +126,10 @@ const MnemonicQuizComponent = ({
 
   const onPressSubmit = () => {
     setMode(Mode.Checking);
-    setTimeout(afterCheck, CHECKING_DURATION);
+    setTimeout(
+      afterCheck,
+      checkingDuration ? checkingDuration : CHECKING_DURATION
+    );
   };
   // grab component styles
   const theme = useTheme();
@@ -133,7 +141,7 @@ const MnemonicQuizComponent = ({
     userChosenWords.length === mnemonicLength && mnemonicLength !== 0;
   const mnemonicWordsToDisplay = mnemonicWordButtons.slice(
     0,
-    MNEMONIC_BUTTONS_TO_DISPLAY
+    numMnemonicChoices ? numMnemonicChoices : MNEMONIC_BUTTONS_TO_DISPLAY
   );
 
   return (
@@ -186,12 +194,12 @@ const MnemonicQuizComponent = ({
             ))}
           </View>
         </View>
+        <QuizChecker
+          onPressSubmit={onPressSubmit}
+          isQuizComplete={isQuizComplete}
+          mode={mode}
+        />
       </ScrollView>
-      <QuizChecker
-        onPressSubmit={onPressSubmit}
-        isQuizComplete={isQuizComplete}
-        mode={mode}
-      />
     </SafeAreaView>
   );
 };
@@ -284,17 +292,25 @@ const QuizChecker = ({ onPressSubmit, isQuizComplete, mode }: CheckerProps) => {
     case Mode.Checking:
       return (
         <View>
-          <ActivityIndicator />
+          <ActivityIndicator size="small" color="#F89B2A" />
         </View>
       );
     case Mode.Failed:
       return (
         <View>
-          <Text>Fail!</Text>
+          <Text>That's not quite right! Give it another try.</Text>
         </View>
       );
     default:
-      return <Button onPress={onPressSubmit} title="Verify" size="default" />;
+      return (
+        <Button
+          onPress={onPressSubmit}
+          title="Validate"
+          size="default"
+          icon="icon-shield"
+          iconPosition="right"
+        />
+      );
   }
 };
 

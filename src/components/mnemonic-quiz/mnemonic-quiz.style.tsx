@@ -79,14 +79,14 @@ export const getMnemonicQuizStyles = createThemedStyleSheet((theme) => ({
   },
   mnemonicWordButton: {
     borderRadius: 3,
-    minWidth: 98,
-    paddingHorizontal: 16,
+    minWidth: 60,
+    paddingHorizontal: 8,
     paddingVertical: 8,
   },
   mnemonicWordButtonText: {
     textAlign: 'center',
     color: theme.mnemonicQuiz.textColor,
-    fontSize: 18,
+    fontSize: 15,
   },
   backWord: {
     paddingRight: 24,
