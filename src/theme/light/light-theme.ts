@@ -56,4 +56,13 @@ export let LIGHT_THEME: Theme = {
     containerBackground: Colors.neutrals.light.neutral3,
     containerBorderColor: Colors.neutrals.light.neutral3,
   },
+  mnemonicQuiz: {
+    containerBackground: Colors.common.white,
+    chosenWordsBackground: Colors.neutrals.light.neutral2,
+    chosenWordsBorder: Colors.neutrals.light.neutral2,
+    chosenWordsFilledBackground: Colors.blue.light,
+    chosenWordColor: Colors.common.black,
+    chosenWordFilledColor: Colors.common.white,
+    textColor: Colors.common.black,
+  },
 };

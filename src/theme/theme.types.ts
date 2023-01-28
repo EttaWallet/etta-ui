@@ -84,6 +84,16 @@ export interface MnemonicBoxTheme {
   containerBorderColor: string;
 }
 
+export interface MnemonicQuizTheme {
+  containerBackground: string;
+  chosenWordsBackground: string;
+  chosenWordsBorder: string;
+  chosenWordsFilledBackground: string;
+  chosenWordColor: string;
+  chosenWordFilledColor: string;
+  textColor: string;
+}
+
 export interface Theme {
   type: 'dark' | 'light' | string;
   buttons: ButtonTheme;
@@ -98,6 +108,7 @@ export interface Theme {
   listItem: ListItemTheme;
   settingsItem: SettingsItemTheme;
   mnemonicBox: MnemonicBoxTheme;
+  mnemonicQuiz: MnemonicQuizTheme;
 }
 export interface DefaultExtendedTheme {}
 export type ExtendedTheme<T = DefaultExtendedTheme> = T & Theme;
