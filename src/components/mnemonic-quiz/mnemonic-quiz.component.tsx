@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { chunk, flatMap, shuffle, times } from 'lodash';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Icon, Button, useTheme } from 'etta-ui';
+import { Button, Chip, useTheme } from 'etta-ui';
 import { getMnemonicQuizStyles } from './mnemonic-quiz.style';
 
 export enum Mode {
@@ -44,16 +44,6 @@ const getOrdinal = (n: number) => {
   return ord;
 };
 
-const Ordinality = (index: number) => {
-  const ordinal = getOrdinal(index);
-  return (
-    <Text>
-      `What is the ${index}
-      <sup>${ordinal}</sup> word?`
-    </Text>
-  );
-};
-
 const MnemonicQuizComponent = ({
   seed,
   resetTitle,
@@ -66,11 +56,7 @@ const MnemonicQuizComponent = ({
   const [userChosenWords, setUserChosenWords] = useState<any>([]);
   const [mode, setMode] = useState(Mode.Entering);
 
-  const setBackSpace = () => {
-    const isVisible = userChosenWords.length > 0 && mode === Mode.Entering;
-
-    <DeleteWord onPressBackspace={onPressBackspace} visible={isVisible} />;
-  };
+  const isVisible = userChosenWords.length > 0 && mode === Mode.Entering;
 
   // component did mount
   useEffect(() => {
@@ -179,6 +165,9 @@ const MnemonicQuizComponent = ({
             <Button title={resetTitle} onPress={onPressReset} />
           </View>
         )}
+        {isVisible && (
+          <DeleteWord onPressBackspace={onPressBackspace} visible={isVisible} />
+        )}
         <View style={styles.bottomHalf}>
           {!isQuizComplete && (
             <Text style={styles.bodyText}>
@@ -257,16 +246,19 @@ const DeleteWord = ({
   onPressBackspace: () => void;
   visible: boolean;
 }) => {
-  // grab component styles
-  const theme = useTheme();
-  const styles = getMnemonicQuizStyles(theme);
   if (!visible) {
     return null;
   }
   return (
-    <TouchableOpacity onPress={onPressBackspace} style={styles.backWord}>
-      <Icon name="icon-clear-character" />
-    </TouchableOpacity>
+    <Chip
+      style={{ marginTop: 15 }}
+      icon="icon-clear-character"
+      iconPosition="left"
+      onPress={onPressBackspace}
+      selected
+    >
+      Remove last word
+    </Chip>
   );
 };
 

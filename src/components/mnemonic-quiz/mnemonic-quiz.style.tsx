@@ -11,7 +11,6 @@ export const getMnemonicQuizStyles = createThemedStyleSheet((theme) => ({
   },
   scrollContainer: {
     paddingTop: 24,
-    flexGrow: 1,
   },
   bottomHalf: { flex: 1, justifyContent: 'center' },
   bodyText: {
