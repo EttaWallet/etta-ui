@@ -1,265 +1,172 @@
-/****
- * A modified fork of https://github.com/gustavobonassa/react-native-intro-carousel
- *  ****/
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
-  FlatList,
-  LayoutChangeEvent,
-  NativeSyntheticEvent,
+  Image,
+  ImageSourcePropType,
+  NativeScrollEvent,
+  ScrollView,
+  Text,
   View,
-  Animated,
+  Dimensions,
 } from 'react-native';
-import BottomButtons from './bottom-buttons';
-import ButtonsScreen, { Button } from './buttons';
-import DefaultCarouselItem from './default';
-import type { CarouselProps } from './types';
-import { useTheme } from 'etta-ui';
+import {
+  NativeSafeAreaViewProps,
+  SafeAreaView,
+} from 'react-native-safe-area-context';
+import { Chip, Button, Pagination, useTheme, Icon, ValueOf } from 'etta-ui';
+import type { ButtonProps } from 'etta-ui';
 import { getCarouselStyles } from './carousel.style';
 
-const viewabilityConfig = { viewAreaCoveragePercentThreshold: 40 };
+const deviceWidth = Dimensions.get('window').width;
 
-const defaultDotSize = 15;
-const defaultSpacing = 12;
+interface CarouselStepProps {
+  icon?: ValueOf<typeof Icon.names>;
+  title: string;
+  // If set to true, title is displayed at the top
+  isTopTitle?: boolean;
+  text?: string;
+  valueProposition?: string;
+  variant?: 'old' | 'new';
+}
 
-const CarouselComponent = ({
-  data,
-  paginationConfig,
-  renderItem,
-  buttonsConfig,
-  onFinish,
-  onPressSkip,
-}: CarouselProps) => {
+export type Props = NativeSafeAreaViewProps & {
+  embeddedNavBar: boolean;
+  stepInfo: CarouselStepProps[];
+  buttonType?: ButtonProps;
+  buttonText: string;
+  finalButtonType?: ButtonProps;
+  finalButtonText: string;
+  onFinish: () => void;
+  onCancel: () => void;
+};
+
+const CarouselComponent = (props: Props) => {
   const theme = useTheme();
   const styles = getCarouselStyles(theme);
+
   const {
-    dotSize = defaultDotSize,
-    bottomOffset = 50,
-    animated = true,
-    disabled = false,
-    dotIncreaseSize = 1.4,
-    color = '#ffffff80',
-    activeColor = '#fff',
-    dotSpacing = defaultSpacing,
-    activeDotStyle,
-  } = paginationConfig || {};
+    style,
+    embeddedNavBar,
+    stepInfo,
+    buttonText,
+    finalButtonText,
+    onFinish,
+    onCancel,
+    ...passThroughProps
+  } = props;
 
-  const [currentIndex, setCurrentItem] = useState(0);
-  const [layoutSize, setLayoutSizes] = useState<{
-    width?: number;
-    height?: number;
-  }>({});
-  const flatlistRef = useRef<FlatList>(null);
-  const scrollX = useRef(new Animated.Value(0)).current;
-  const scaleAnimation = useRef(new Animated.Value(0)).current;
-  const [isNextToDot, setIsNextToDot] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  // This variable tracks the last scrolled to carousel screen, so that impression
+  // events are not dispatched twice for the same carousel screen
+  const lastViewedIndex = useRef(-1);
+  // Scroll View Ref for button clicks
+  const scrollViewRef = useRef<ScrollView>(null);
 
-  const disabledButtons = buttonsConfig?.disabled ?? false;
-  const useBottomButtons = buttonsConfig?.useBottomButtons ?? false;
-
-  const itemWidth = layoutSize?.width || 0;
-  const maxPaginationSize = data.length * dotSize + data.length * dotSpacing;
-  const maxSlidersSize = itemWidth * data.length;
-
-  useEffect(() => {
-    Animated.timing(scaleAnimation, {
-      toValue: isNextToDot ? 1 : 0,
-      duration: 100,
-      useNativeDriver: true,
-    }).start();
-  }, [isNextToDot, scaleAnimation]);
-
-  const onViewableItemsChanged = useCallback(({ viewableItems }) => {
-    if (viewableItems.length > 0 && viewableItems?.[0]?.index >= 0) {
-      setCurrentItem(viewableItems[0].index);
-    }
-  }, []);
-
-  const viewabilityConfigCallbackPairs = useRef([
-    { onViewableItemsChanged, viewabilityConfig },
-  ]);
-
-  const onChangeSlider = (page: number) => {
-    if (!flatlistRef?.current || page < 0 || page >= data.length) {
+  const handleScroll = (event: { nativeEvent: NativeScrollEvent }) => {
+    const nextIndex = Math.round(
+      event.nativeEvent.contentOffset.x / deviceWidth
+    );
+    if (nextIndex === currentIndex) {
       return;
     }
-    flatlistRef.current.scrollToIndex({
-      index: page,
-    });
+
+    setCurrentIndex(
+      Math.round(event.nativeEvent.contentOffset.x / deviceWidth)
+    );
   };
 
-  const handleOnLayout = ({ nativeEvent: { layout } }: LayoutChangeEvent) => {
-    setLayoutSizes(layout);
+  useEffect(() => {
+    if (stepInfo.length > 0 && lastViewedIndex.current < currentIndex) {
+      lastViewedIndex.current = currentIndex;
+    }
+  }, [currentIndex, stepInfo]);
+
+  if (!stepInfo.length) {
+    // No Steps, no slider
+    return null;
+  }
+
+  const goBack = () => {
+    if (currentIndex === 0) {
+      onCancel; // do something e.g navigate backwards
+    } else {
+      scrollViewRef.current?.scrollTo({
+        x: deviceWidth * (currentIndex - 1),
+        animated: true,
+      });
+    }
   };
 
-  const renderPagination = () => {
+  const nextStep = () => {
+    // If we are on the last step, call the onFinish function otherwise scroll to the next step
+    currentIndex === stepInfo.length - 1
+      ? onFinish()
+      : scrollViewRef.current?.scrollTo({
+          x: deviceWidth * (currentIndex + 1),
+          animated: true,
+        });
+  };
+
+  const renderEmbeddedNavBar = () => {
     return (
-      <View
-        style={[
-          styles.bottomContent,
-          {
-            bottom: bottomOffset,
-          },
-        ]}
-      >
-        <View style={[styles.paginationContainer]}>
-          {!disabledButtons && !useBottomButtons && (
-            <ButtonsScreen
-              buttonsConfig={buttonsConfig}
-              currentIndex={currentIndex}
-              maxPaginationSize={maxPaginationSize}
-              dataLength={data.length}
-              onChangeSlider={(s) => onChangeSlider(s)}
-              onFinish={onFinish}
-            />
-          )}
-          <View style={styles.pagination}>
-            {animated && (
-              <Animated.View
-                // eslint-disable-next-line react-native/no-inline-styles
-                style={{
-                  ...styles.item,
-                  backgroundColor: activeColor,
-                  position: 'absolute',
-                  left: 0,
-                  zIndex: 1,
-                  width: dotSize,
-                  height: dotSize,
-                  ...activeDotStyle,
-                  transform: [
-                    {
-                      translateX: scrollX.interpolate({
-                        inputRange: [0, maxSlidersSize],
-                        outputRange: [0, maxPaginationSize],
-                        extrapolate: 'clamp',
-                      }),
-                    },
-                    {
-                      scale: scaleAnimation.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [1, dotIncreaseSize],
-                        extrapolate: 'clamp',
-                      }),
-                    },
-                  ],
-                }}
-              />
-            )}
-            {data.map((_: any, index: any) => {
-              const isActive = !animated && index === currentIndex;
-              return (
-                <View
-                  // eslint-disable-next-line react-native/no-inline-styles
-                  style={{
-                    ...styles.item,
-                    width: dotSize,
-                    height: dotSize,
-                    ...(isActive && activeDotStyle),
-                    marginLeft: index === 0 ? 0 : dotSpacing,
-                    backgroundColor: isActive ? activeColor : color,
-                  }}
-                  key={index}
-                />
-              );
-            })}
-          </View>
-        </View>
-        {useBottomButtons && (
-          <BottomButtons
-            onPressNext={() => onChangeSlider(currentIndex + 1)}
-            onPressSkip={onPressSkip}
-            buttonsConfig={buttonsConfig}
-            onFinish={onFinish}
-            currentIndex={currentIndex}
-            dataLength={data.length}
-          />
-        )}
+      <View style={styles.top}>
+        <Chip
+          onPress={goBack}
+          icon={currentIndex === 0 ? 'icon-cross' : 'icon-caret-left'}
+        >
+          {currentIndex === 0 ? 'Close' : 'Previous'}
+        </Chip>
       </View>
     );
   };
 
-  const handleEvent = ({ nativeEvent }: NativeSyntheticEvent<any>) => {
-    const { x } = nativeEvent?.contentOffset || {};
-
-    const positionItem = x % itemWidth;
-    const nextToDot = positionItem < 40 || positionItem > itemWidth - 40;
-    if (nextToDot !== isNextToDot) {
-      setIsNextToDot(nextToDot);
-    }
-  };
-
   return (
-    <View
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={[styles.container, { position: 'relative' }]}
-      onLayout={handleOnLayout}
-    >
-      <Animated.FlatList
-        ref={flatlistRef}
-        initialScrollIndex={0}
-        onScroll={Animated.event(
-          [
-            {
-              nativeEvent: {
-                contentOffset: {
-                  x: scrollX,
-                },
-              },
-            },
-          ],
-          {
-            useNativeDriver: true,
-            listener: handleEvent,
-          }
-        )}
-        data={data}
-        horizontal
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
-        bounces={false}
-        initialNumToRender={data.length}
-        decelerationRate="fast"
-        viewabilityConfigCallbackPairs={viewabilityConfigCallbackPairs.current}
-        snapToAlignment="start"
-        snapToInterval={itemWidth}
-        pagingEnabled
-        renderItem={({ item, index }) =>
-          renderItem ? (
-            <View
-              style={{
-                ...styles.container,
-                width: itemWidth,
-              }}
+    <SafeAreaView style={[styles.root, style]} {...passThroughProps}>
+      {embeddedNavBar && renderEmbeddedNavBar()}
+      <View style={styles.container}>
+        <ScrollView
+          ref={scrollViewRef}
+          horizontal={true}
+          pagingEnabled={true}
+          showsHorizontalScrollIndicator={false}
+          onScroll={handleScroll}
+        >
+          {stepInfo.map((step: CarouselStepProps, i: number) => (
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={styles.contentContainer}
+              style={styles.swipedContent}
+              key={i}
             >
-              {renderItem({ item, index }, onChangeSlider)}
-            </View>
-          ) : (
-            <DefaultCarouselItem
-              style={{
-                ...styles.container,
-                width: itemWidth,
-              }}
-              data={item}
-            />
-          )
-        }
-        keyExtractor={(item) => item.key}
-      />
-      {!disabled && renderPagination()}
-      {onPressSkip && !useBottomButtons && !buttonsConfig?.skip?.disabled && (
-        <View style={styles.skipButton}>
-          {!buttonsConfig?.skip?.renderButton ? (
-            <Button
-              title={buttonsConfig?.skip?.label || 'Skip'}
-              onPress={onPressSkip}
-              textStyle={buttonsConfig?.skip?.textStyle}
-              buttonStyle={buttonsConfig?.skip?.buttonStyle}
-            />
-          ) : (
-            buttonsConfig?.skip?.renderButton(currentIndex, onChangeSlider)
-          )}
-        </View>
-      )}
-    </View>
+              {step.isTopTitle && (
+                <Text style={styles.headingTop}>{step.title}</Text>
+              )}
+              <View style={styles.swipedContentInner}>
+                {step.icon && <Icon name={icon} />}
+                {!step.isTopTitle && (
+                  <Text style={styles.heading}>{step.title}</Text>
+                )}
+                {!!step.text && (
+                  <Text style={styles.bodyText}>{step.text}</Text>
+                )}
+              </View>
+            </ScrollView>
+          ))}
+        </ScrollView>
+        <Pagination
+          style={styles.pagination}
+          count={stepInfo.length}
+          selectedIndex={currentIndex}
+        />
+        <Button
+          onPress={nextStep}
+          title={
+            currentIndex === stepInfo.length - 1 ? finalButtonText : buttonText
+          }
+          appearance="filled"
+          fullWidth
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 

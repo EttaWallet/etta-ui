@@ -100,11 +100,6 @@ export interface PinCodeTheme {
   errorColor: string;
 }
 
-export interface CarouselTheme {
-  buttonTextColor: string;
-  bottomButtonTextColor: string;
-}
-
 export interface Theme {
   type: 'dark' | 'light' | string;
   buttons: ButtonTheme;
@@ -121,7 +116,6 @@ export interface Theme {
   mnemonicBox: MnemonicBoxTheme;
   mnemonicQuiz: MnemonicQuizTheme;
   pincode: PinCodeTheme;
-  carousel: CarouselTheme;
 }
 export interface DefaultExtendedTheme {}
 export type ExtendedTheme<T = DefaultExtendedTheme> = T & Theme;

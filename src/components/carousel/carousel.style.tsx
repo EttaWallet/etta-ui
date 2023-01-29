@@ -1,108 +1,61 @@
 import { createThemedStyleSheet } from '../../theme';
 import { TypographyPresets } from 'etta-ui';
+import { Dimensions } from 'react-native';
 
-export const getCarouselStyles = createThemedStyleSheet((theme) => ({
-  // carousel styles
+const deviceWidth = Dimensions.get('window').width;
+
+export const getCarouselStyles = createThemedStyleSheet(() => ({
+  root: {
+    flex: 1,
+  },
+  contentContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexGrow: 1,
+    paddingHorizontal: 12,
+  },
   container: {
     flex: 1,
-    width: '100%',
-    justifyContent: 'center',
+    flexWrap: 'wrap',
     alignItems: 'center',
-  },
-  item: {
-    borderRadius: 50,
-  },
-  pagination: {
-    flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-    width: 'auto',
+    paddingBottom: 24,
   },
-  paginationContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    minHeight: 40,
-  },
-  bottomContent: {
-    position: 'absolute',
-    width: '100%',
-  },
-  button: {
-    padding: 10,
-  },
-  skipButton: {
-    position: 'absolute',
-    top: 40,
-    right: 20,
-    zIndex: 3,
-  },
-
-  // carousel button styles
-  buttonContainer: {
-    width: '100%',
-    position: 'absolute',
-    zIndex: 2,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    top: 0,
-    bottom: 0,
-    right: 0,
-  },
-  buttonItem: {
-    padding: 10,
-  },
-  buttonContent: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: theme.carousel.buttonTextColor,
-    fontSize: 16,
-  },
-
-  // default carouselItem styles
-  carouselContainer: {
-    flex: 1,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
+  heading: {
+    marginTop: 24,
     ...TypographyPresets.Header2,
     textAlign: 'center',
   },
-  description: {
+  headingTop: {
+    ...TypographyPresets.Header2,
+    marginTop: 26,
+    alignSelf: 'flex-start',
+  },
+  bodyText: {
     ...TypographyPresets.Body3,
     textAlign: 'center',
+    paddingTop: 16,
+    marginBottom: 24,
   },
-  banner: {
-    width: 250,
-    height: 250,
+  bodyImage: {
+    alignSelf: 'center',
+    marginBottom: 24,
   },
-
-  // bottom buttons styles
-  bottomButtonContainer: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 15,
+  swipedContent: {
+    width: deviceWidth - 2 * 38,
+    margin: 16,
   },
-  bottomButton: {
-    padding: 10,
-    borderRadius: 5,
-    width: '100%',
-    alignItems: 'center',
-  },
-  bottomButtonContent: {
+  swipedContentInner: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
   },
-  bottomButtonText: {
-    color: theme.carousel.bottomButtonTextColor,
-    fontSize: 18,
+  top: {
+    paddingLeft: 24,
+    paddingVertical: 16,
+    flexDirection: 'row',
+    width: '100%',
+  },
+  pagination: {
+    paddingBottom: 16,
   },
 }));
