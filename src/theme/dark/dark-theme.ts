@@ -70,4 +70,8 @@ export let DARK_THEME: Theme = {
     dotBorderColor: Colors.common.white,
     errorColor: Colors.red.base,
   },
+  carousel: {
+    buttonTextColor: Colors.common.white,
+    bottomButtonTextColor: Colors.common.white,
+  },
 };

@@ -1,4 +1,5 @@
 export * from './button';
+export * from './carousel';
 export * from './chip';
 export * from './icon';
 export * from './input';
