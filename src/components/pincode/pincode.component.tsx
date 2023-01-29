@@ -129,7 +129,7 @@ const PincodeDisplay = ({ pinEntered, maxLength }: PinDisplayProps) => {
 
   return (
     <View style={styles.displayContainer}>
-      {Array.from({ length: maxLength }).map((x, index) => {
+      {Array.from({ length: maxLength }).map((_x, index) => {
         const char = index === revealIndex ? pinEntered[index] : undefined;
         const isEntered = index < pinEntered.length;
         const key = `${index}_${isEntered}_${char}`;
