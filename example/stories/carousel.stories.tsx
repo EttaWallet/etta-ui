@@ -10,7 +10,6 @@ const scrollViewWithPaddingStyle: ViewStyle = {
   flex: 1,
   alignItems: 'center',
   justifyContent: 'center',
-  marginHorizontal: 20,
 };
 
 export default {

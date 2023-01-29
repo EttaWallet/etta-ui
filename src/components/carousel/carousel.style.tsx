@@ -42,7 +42,7 @@ export const getCarouselStyles = createThemedStyleSheet(() => ({
     marginBottom: 24,
   },
   swipedContent: {
-    width: deviceWidth - 2 * 38,
+    width: deviceWidth - 2 * 16,
     margin: 16,
   },
   swipedContentInner: {

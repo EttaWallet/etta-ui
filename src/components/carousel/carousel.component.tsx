@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  Image,
-  ImageSourcePropType,
   NativeScrollEvent,
   ScrollView,
   Text,
@@ -141,7 +139,7 @@ const CarouselComponent = (props: Props) => {
                 <Text style={styles.headingTop}>{step.title}</Text>
               )}
               <View style={styles.swipedContentInner}>
-                {step.icon && <Icon name={icon} />}
+                {step.icon && <Icon name="icon-address-book" />}
                 {!step.isTopTitle && (
                   <Text style={styles.heading}>{step.title}</Text>
                 )}
@@ -163,7 +161,6 @@ const CarouselComponent = (props: Props) => {
             currentIndex === stepInfo.length - 1 ? finalButtonText : buttonText
           }
           appearance="filled"
-          fullWidth
         />
       </View>
     </SafeAreaView>
