@@ -94,6 +94,12 @@ export interface MnemonicQuizTheme {
   textColor: string;
 }
 
+export interface PinCodeTheme {
+  dotBorderColor: string;
+  dotBackgroundColor: string;
+  errorColor: string;
+}
+
 export interface Theme {
   type: 'dark' | 'light' | string;
   buttons: ButtonTheme;
@@ -109,6 +115,7 @@ export interface Theme {
   settingsItem: SettingsItemTheme;
   mnemonicBox: MnemonicBoxTheme;
   mnemonicQuiz: MnemonicQuizTheme;
+  pincode: PinCodeTheme;
 }
 export interface DefaultExtendedTheme {}
 export type ExtendedTheme<T = DefaultExtendedTheme> = T & Theme;

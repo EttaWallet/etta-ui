@@ -8,6 +8,7 @@ export * from './mnemonic-box';
 export * from './mnemonic-quiz';
 export * from './modal';
 export * from './pagination';
+export * from './pincode';
 export * from './settings-item';
 export * from './switch';
 export * from './textarea';

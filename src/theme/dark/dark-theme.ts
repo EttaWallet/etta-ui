@@ -65,4 +65,9 @@ export let DARK_THEME: Theme = {
     chosenWordFilledColor: Colors.common.white,
     textColor: Colors.common.black,
   },
+  pincode: {
+    dotBackgroundColor: Colors.orange.base,
+    dotBorderColor: Colors.common.white,
+    errorColor: Colors.red.base,
+  },
 };

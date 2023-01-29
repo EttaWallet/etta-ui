@@ -65,4 +65,9 @@ export let LIGHT_THEME: Theme = {
     chosenWordFilledColor: Colors.common.white,
     textColor: Colors.common.black,
   },
+  pincode: {
+    dotBackgroundColor: Colors.common.black,
+    dotBorderColor: Colors.neutrals.light.neutral6,
+    errorColor: Colors.red.base,
+  },
 };
