@@ -1,4 +1,5 @@
 import { createThemedStyleSheet } from '../../theme';
+import { TypographyPresets } from 'etta-ui';
 
 export const getCarouselStyles = createThemedStyleSheet((theme) => ({
   // carousel styles
@@ -36,6 +37,7 @@ export const getCarouselStyles = createThemedStyleSheet((theme) => ({
     right: 20,
     zIndex: 3,
   },
+
   // carousel button styles
   buttonContainer: {
     width: '100%',
@@ -60,6 +62,7 @@ export const getCarouselStyles = createThemedStyleSheet((theme) => ({
     color: theme.carousel.buttonTextColor,
     fontSize: 16,
   },
+
   // default carouselItem styles
   carouselContainer: {
     flex: 1,
@@ -68,20 +71,19 @@ export const getCarouselStyles = createThemedStyleSheet((theme) => ({
     alignItems: 'center',
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    ...TypographyPresets.Header2,
     textAlign: 'center',
   },
   description: {
-    fontSize: 16,
+    ...TypographyPresets.Body3,
     textAlign: 'center',
   },
   banner: {
     width: 250,
     height: 250,
   },
-  // bottom buttons styles
 
+  // bottom buttons styles
   bottomButtonContainer: {
     width: '100%',
     justifyContent: 'center',

@@ -10,7 +10,7 @@ type CarouselItemProps = {
 };
 
 const DefaultCarouselItem = ({ data, style }: CarouselItemProps) => {
-  const imgPosition = data.imagePosition || 'center';
+  const imgPosition = data.imagePosition || 'bottom';
 
   const theme = useTheme();
   const styles = getCarouselStyles(theme);
