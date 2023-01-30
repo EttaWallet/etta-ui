@@ -18,9 +18,8 @@ const deviceWidth = Dimensions.get('window').width;
 
 interface CarouselStepProps {
   icon?: ValueOf<typeof Icon.names>;
+  iconBg?: string;
   title: string;
-  // If set to true, title is displayed at the top
-  isTopTitle?: boolean;
   text?: string;
   valueProposition?: string;
   variant?: 'old' | 'new';
@@ -135,14 +134,18 @@ const CarouselComponent = (props: Props) => {
               style={styles.swipedContent}
               key={i}
             >
-              {step.isTopTitle && (
-                <Text style={styles.headingTop}>{step.title}</Text>
-              )}
               <View style={styles.swipedContentInner}>
-                {step.icon && <Icon name="icon-address-book" />}
-                {!step.isTopTitle && (
-                  <Text style={styles.heading}>{step.title}</Text>
+                {step.icon && (
+                  <View
+                    style={[
+                      styles.iconContainer,
+                      { backgroundColor: step.iconBg },
+                    ]}
+                  >
+                    <Icon name={step.icon} style={styles.bodyIcon} />
+                  </View>
                 )}
+                <Text style={styles.heading}>{step.title}</Text>
                 {!!step.text && (
                   <Text style={styles.bodyText}>{step.text}</Text>
                 )}

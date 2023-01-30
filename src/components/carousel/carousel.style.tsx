@@ -4,7 +4,7 @@ import { Dimensions } from 'react-native';
 
 const deviceWidth = Dimensions.get('window').width;
 
-export const getCarouselStyles = createThemedStyleSheet(() => ({
+export const getCarouselStyles = createThemedStyleSheet((theme) => ({
   root: {
     flex: 1,
   },
@@ -12,7 +12,6 @@ export const getCarouselStyles = createThemedStyleSheet(() => ({
     alignItems: 'center',
     justifyContent: 'center',
     flexGrow: 1,
-    paddingHorizontal: 12,
   },
   container: {
     flex: 1,
@@ -22,28 +21,37 @@ export const getCarouselStyles = createThemedStyleSheet(() => ({
     paddingBottom: 24,
   },
   heading: {
-    marginTop: 24,
+    marginTop: 30,
     ...TypographyPresets.Header2,
     textAlign: 'center',
   },
   headingTop: {
     ...TypographyPresets.Header2,
-    marginTop: 26,
+    marginTop: 30,
     alignSelf: 'flex-start',
   },
   bodyText: {
     ...TypographyPresets.Body3,
     textAlign: 'center',
     paddingTop: 16,
-    marginBottom: 24,
+    color: theme.carousel.bodyTextColor,
   },
-  bodyImage: {
+  bodyIcon: {
     alignSelf: 'center',
-    marginBottom: 24,
+    justifyContent: 'center',
+    fontSize: 52,
+    color: theme.carousel.bodyIconColor,
+  },
+  iconContainer: {
+    alignSelf: 'center',
+    justifyContent: 'center',
+    width: 100,
+    height: 100,
+    borderRadius: 50,
   },
   swipedContent: {
-    width: deviceWidth - 2 * 16,
-    margin: 16,
+    width: deviceWidth - 2 * 20,
+    margin: 20,
   },
   swipedContentInner: {
     flex: 1,
@@ -56,6 +64,6 @@ export const getCarouselStyles = createThemedStyleSheet(() => ({
     width: '100%',
   },
   pagination: {
-    paddingBottom: 16,
+    paddingBottom: 28,
   },
 }));

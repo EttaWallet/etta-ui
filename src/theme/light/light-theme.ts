@@ -70,4 +70,8 @@ export let LIGHT_THEME: Theme = {
     dotBorderColor: Colors.neutrals.light.neutral6,
     errorColor: Colors.red.base,
   },
+  carousel: {
+    bodyTextColor: Colors.neutrals.light.neutral7,
+    bodyIconColor: Colors.common.white,
+  },
 };
