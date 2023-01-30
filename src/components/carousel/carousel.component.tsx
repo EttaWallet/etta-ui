@@ -164,6 +164,7 @@ const CarouselComponent = (props: Props) => {
             currentIndex === stepInfo.length - 1 ? finalButtonText : buttonText
           }
           appearance="filled"
+          size="block"
         />
       </View>
     </SafeAreaView>

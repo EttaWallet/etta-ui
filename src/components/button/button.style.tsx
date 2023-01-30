@@ -59,6 +59,24 @@ const getStyles = createThemedStyleSheet((theme) => ({
     borderColor: theme.buttons.transparent.border.disabled,
   },
 
+  // --- CONTAINER SIZE BLOCK ---
+  container__size_block: {
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    width: 335,
+    justifyContent: 'center',
+  },
+
+  container__size_block__icon_left: {
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+
+  container__size_block__icon_right: {
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+
   // --- CONTAINER SIZE DEFAULT ---
   container__size_default: {
     paddingVertical: 14,
@@ -114,6 +132,13 @@ const getStyles = createThemedStyleSheet((theme) => ({
     lineHeight: 18,
   },
 
+  text_block: {
+    fontSize: 18,
+    lineHeight: 18,
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+
   text_default: {
     fontSize: 18,
     lineHeight: 18,
@@ -133,6 +158,14 @@ const getStyles = createThemedStyleSheet((theme) => ({
     lineHeight: 18,
     fontWeight: '500',
     textAlign: 'center',
+  },
+
+  text__size_block__icon_right: {
+    marginLeft: 5,
+  },
+
+  text__size_block__icon_left: {
+    marginLeft: 5,
   },
 
   text__size_default__icon_right: {
@@ -161,6 +194,11 @@ const getStyles = createThemedStyleSheet((theme) => ({
 
   icon: {
     textAlign: 'center',
+  },
+
+  icon__size_block: {
+    fontSize: 18,
+    width: 18,
   },
 
   icon__size_default: {
@@ -240,6 +278,20 @@ export function getContainerStyle(options: {
 
     {
       container: true,
+      container__size_block: {
+        size: sizes.block,
+      },
+
+      container__size_block__icon_right: {
+        iconPosition: iconPositions.right,
+        size: sizes.block,
+      },
+
+      container__size_block__icon_left: {
+        iconPosition: iconPositions.left,
+        size: sizes.block,
+      },
+
       container__size_default: {
         size: sizes.default,
       },
@@ -360,6 +412,16 @@ export function getTextStyle(options: {
     {
       text: true,
 
+      text__size_block__icon_left: {
+        size: sizes.default,
+        iconPosition: iconPositions.left,
+      },
+
+      text__size_block__icon_right: {
+        size: sizes.default,
+        iconPosition: iconPositions.right,
+      },
+
       text__size_default__icon_left: {
         size: sizes.default,
         iconPosition: iconPositions.left,
@@ -422,6 +484,10 @@ export function getIconStyle(options: {
     { size, iconPosition },
     {
       icon: true,
+
+      icon__size_block: {
+        size: sizes.block,
+      },
 
       icon__size_default: {
         size: sizes.default,
