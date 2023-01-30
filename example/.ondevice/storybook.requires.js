@@ -55,6 +55,7 @@ const getStories = () => {
     require("../stories/settings-item-text.stories.tsx"),
     require("../stories/switch.stories.tsx"),
     require("../stories/textarea.stories.tsx"),
+    require("../stories/typography.stories.tsx"),
   ];
 };
 
