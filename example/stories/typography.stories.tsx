@@ -2,8 +2,8 @@
 import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { TypographyPresets, Colors } from 'etta-ui';
-import { Dimensions, TextStyle, ViewStyle, View } from 'react-native';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView, Text, Dimensions, View } from 'react-native';
+import type { TextStyle, ViewStyle } from 'react-native';
 
 const scrollViewWithPaddingStyle: ViewStyle = {
   flexDirection: 'row',
