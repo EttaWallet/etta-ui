@@ -4,6 +4,7 @@ export * from './chip';
 export * from './icon';
 export * from './input';
 export * from './keypad';
+export * from './nav-header';
 export * from './home-button';
 export * from './list-item';
 export * from './mnemonic-box';

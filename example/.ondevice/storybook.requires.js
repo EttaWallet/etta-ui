@@ -42,6 +42,7 @@ const getStories = () => {
     require("../stories/button.stories.tsx"),
     require("../stories/carousel.stories.tsx"),
     require("../stories/chip.stories.tsx"),
+    require("../stories/header.stories.tsx"),
     require("../stories/home-button.stories.tsx"),
     require("../stories/input.stories.tsx"),
     require("../stories/keypad.stories.tsx"),
