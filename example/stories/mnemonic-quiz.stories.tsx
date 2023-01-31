@@ -55,9 +55,9 @@ const Template: ComponentStory<typeof MnemonicQuiz> = (args) => {
   return <MnemonicQuiz {...args} />;
 };
 
-export const Backup = Template.bind({});
+export const BackupQuiz = Template.bind({});
 
-Backup.args = {
+BackupQuiz.args = {
   seed: mnemonic,
   numMnemonicChoices: 8,
   checkingDuration: 1.8 * 1000,

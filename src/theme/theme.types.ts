@@ -105,6 +105,12 @@ export interface CarouselTheme {
   bodyIconColor: string;
 }
 
+export interface HomeButtonTheme {
+  borderColor: string;
+  backgroundColor: string;
+  textColor: string;
+}
+
 export interface Theme {
   type: 'dark' | 'light' | string;
   buttons: ButtonTheme;
@@ -122,6 +128,7 @@ export interface Theme {
   mnemonicQuiz: MnemonicQuizTheme;
   pincode: PinCodeTheme;
   carousel: CarouselTheme;
+  homeButton: HomeButtonTheme;
 }
 export interface DefaultExtendedTheme {}
 export type ExtendedTheme<T = DefaultExtendedTheme> = T & Theme;

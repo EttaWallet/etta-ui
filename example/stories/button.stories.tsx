@@ -32,7 +32,7 @@ export default {
       control: { type: 'radio' },
     },
     size: {
-      options: ['default', 'large', 'small'],
+      options: ['default', 'large', 'small', 'block'],
       control: { type: 'radio' },
     },
     disabled: {

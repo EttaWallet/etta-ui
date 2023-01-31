@@ -74,4 +74,9 @@ export let DARK_THEME: Theme = {
     bodyTextColor: Colors.neutrals.light.neutral7,
     bodyIconColor: Colors.common.white,
   },
+  homeButton: {
+    backgroundColor: Colors.common.black,
+    borderColor: Colors.neutrals.light.neutral4,
+    textColor: Colors.common.white,
+  },
 };

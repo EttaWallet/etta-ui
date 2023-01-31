@@ -1,4 +1,5 @@
 import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
+import { Dimensions } from 'react-native';
 import type { Theme } from '../../theme';
 import { createThemedStyleSheet } from '../../theme';
 import { buttonVars } from './button.vars';
@@ -6,6 +7,8 @@ import type { ValueOf } from 'etta-ui';
 import { selectStyles } from '../../utils/select-styles';
 
 const { sizes, iconPositions, appearances } = buttonVars;
+
+const deviceWidth = Dimensions.get('window').width;
 
 const getStyles = createThemedStyleSheet((theme) => ({
   container: {
@@ -63,7 +66,7 @@ const getStyles = createThemedStyleSheet((theme) => ({
   container__size_block: {
     paddingVertical: 14,
     paddingHorizontal: 20,
-    width: 335,
+    minWidth: deviceWidth - 2 * 16,
     justifyContent: 'center',
   },
 

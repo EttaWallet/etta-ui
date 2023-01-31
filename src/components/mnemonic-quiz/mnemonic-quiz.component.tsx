@@ -306,7 +306,7 @@ const QuizChecker = ({ onPressSubmit, isQuizComplete, mode }: CheckerProps) => {
         <Button
           onPress={onPressSubmit}
           title="Validate"
-          size="default"
+          size="block"
           icon="icon-shield"
           iconPosition="right"
         />
