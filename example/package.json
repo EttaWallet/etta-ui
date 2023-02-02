@@ -2,7 +2,6 @@
   "name": "example",
   "version": "1.0.0",
   "scripts": {
-    "dev": "npx expo start --dev-client",
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
@@ -12,7 +11,9 @@
     "storybook-watcher": "sb-rn-watcher --config-path .ondevice",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "eas-android": "eas build --profile development --platform android"
+    "eas-android": "eas build --profile development --platform android",
+    "eas-ios": "eas build --profile development --platform ios",
+    "postinstall": "rm -rf node_modules/expo/node_modules/react-native-safe-area-context"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "~1.17.3",
@@ -21,7 +22,7 @@
     "expo": "~47.0.12",
     "expo-community-flipper": "^47.0.0",
     "expo-dev-client": "~2.0.1",
-    "expo-font": "^11.0.1",
+    "expo-font": "~11.0.1",
     "expo-haptics": "~12.0.1",
     "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "~1.4.2",
@@ -29,10 +30,10 @@
     "react-dom": "18.1.0",
     "react-native": "0.70.5",
     "react-native-flipper": "^0.177.0",
-    "react-native-web": "^0.18.10"
+    "react-native-web": "~0.18.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
+    "@babel/core": "^7.19.3",
     "@expo/webpack-config": "^0.17.2",
     "@storybook/addon-actions": "^6.5.14",
     "@storybook/addon-controls": "^6.5.14",

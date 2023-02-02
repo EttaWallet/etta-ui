@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { getKeyPadStyles } from './keypad.style';
-import { useTheme, Icon } from 'etta-ui';
+import { useTheme, BackspaceIcon } from 'etta-ui';
 
 interface Props {
   onDigitPress: (digit: number) => void;
@@ -65,7 +65,7 @@ const NumericKeypad = (props: Props) => {
           onLongPress={props.onBackspaceLongPress}
         >
           <View style={styles.digit}>
-            <Icon name="icon-clear-character" />
+            <BackspaceIcon />
           </View>
         </TouchableOpacity>
       </View>

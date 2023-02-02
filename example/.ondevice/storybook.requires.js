@@ -8,6 +8,16 @@ import {
   clearDecorators,
 } from "@storybook/react-native";
 
+global.STORIES = [
+  {
+    titlePrefix: "",
+    directory: "./stories",
+    files: "*.stories.?(ts|tsx|js|jsx)",
+    importPathMatcher:
+      "^\\.[\\\\/](?:stories\\/(?!\\.)(?=.)[^/]*?\\.stories\\.(?:ts|tsx|js|jsx)?)$",
+  },
+];
+
 import "@storybook/addon-ondevice-controls/register";
 import "@storybook/addon-ondevice-actions/register";
 import "@storybook/addon-ondevice-backgrounds/register";
@@ -38,27 +48,27 @@ try {
 } catch {}
 
 const getStories = () => {
-  return [
-    require("../stories/button.stories.tsx"),
-    require("../stories/carousel.stories.tsx"),
-    require("../stories/chip.stories.tsx"),
-    require("../stories/header.stories.tsx"),
-    require("../stories/home-button.stories.tsx"),
-    require("../stories/input.stories.tsx"),
-    require("../stories/keypad.stories.tsx"),
-    require("../stories/list-item.stories.tsx"),
-    require("../stories/mnemonic-box.stories.tsx"),
-    require("../stories/mnemonic-quiz.stories.tsx"),
-    require("../stories/modal.stories.tsx"),
-    require("../stories/pagination.stories.tsx"),
-    require("../stories/pincode.stories.tsx"),
-    require("../stories/settings-item-expanded.stories.tsx"),
-    require("../stories/settings-item-switch.stories.tsx"),
-    require("../stories/settings-item-text.stories.tsx"),
-    require("../stories/switch.stories.tsx"),
-    require("../stories/textarea.stories.tsx"),
-    require("../stories/typography.stories.tsx"),
-  ];
+  return {
+    "./stories/button.stories.tsx": require("../stories/button.stories.tsx"),
+    "./stories/carousel.stories.tsx": require("../stories/carousel.stories.tsx"),
+    "./stories/chip.stories.tsx": require("../stories/chip.stories.tsx"),
+    "./stories/header.stories.tsx": require("../stories/header.stories.tsx"),
+    "./stories/home-button.stories.tsx": require("../stories/home-button.stories.tsx"),
+    "./stories/input.stories.tsx": require("../stories/input.stories.tsx"),
+    "./stories/keypad.stories.tsx": require("../stories/keypad.stories.tsx"),
+    "./stories/list-item.stories.tsx": require("../stories/list-item.stories.tsx"),
+    "./stories/mnemonic-box.stories.tsx": require("../stories/mnemonic-box.stories.tsx"),
+    "./stories/mnemonic-quiz.stories.tsx": require("../stories/mnemonic-quiz.stories.tsx"),
+    "./stories/modal.stories.tsx": require("../stories/modal.stories.tsx"),
+    "./stories/pagination.stories.tsx": require("../stories/pagination.stories.tsx"),
+    "./stories/pincode.stories.tsx": require("../stories/pincode.stories.tsx"),
+    "./stories/settings-item-expanded.stories.tsx": require("../stories/settings-item-expanded.stories.tsx"),
+    "./stories/settings-item-switch.stories.tsx": require("../stories/settings-item-switch.stories.tsx"),
+    "./stories/settings-item-text.stories.tsx": require("../stories/settings-item-text.stories.tsx"),
+    "./stories/switch.stories.tsx": require("../stories/switch.stories.tsx"),
+    "./stories/textarea.stories.tsx": require("../stories/textarea.stories.tsx"),
+    "./stories/typography.stories.tsx": require("../stories/typography.stories.tsx"),
+  };
 };
 
 configure(getStories, module, false);

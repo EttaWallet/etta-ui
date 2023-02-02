@@ -3,7 +3,7 @@
     "baseUrl": "./",
     "paths": {
       "etta-ui": ["./src/index"],
-      // "react": ["./node_modules/@types/react" ]
+      "react": ["./node_modules/@types/react" ]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -24,6 +24,6 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
   }
 }
