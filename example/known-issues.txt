@@ -1,0 +1,12 @@
+On SVGs, 
+- To use the custom svg icons, have to use react-native-svg@13.6.0 since it's compiled natively with expo SDK47
+https://github.com/software-mansion/react-native-svg/issues/1944#issuecomment-1371023149
+
+On linking RN packages: This worked for react-native-safe-area-context and react-native-svg:
+https://github.com/storybookjs/react-native/issues/422#issuecomment-1414378449
+- Install react-native-safe-area-context and react-native-svg with yarn: yarn add react-native-safe-area-context react-native-svg
+- run expo run:ios then cancel. This installs Pods and links packages
+- run expo run:android then cancel.
+- At this point, if you run yarn start, you might have an error: Invariant Violation: Tried to register two views with the same name RNCSafeAreaProvider
+- Remove react-native-safe-area-context: yarn remove react-native-safe-area-context
+- run yarn start -c.
