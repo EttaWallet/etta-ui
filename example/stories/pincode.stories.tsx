@@ -11,7 +11,6 @@ const scrollViewWithPaddingStyle: ViewStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   marginHorizontal: 16,
-  marginTop: 100,
 };
 
 export default {
