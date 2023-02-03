@@ -12,8 +12,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "eas-android": "eas build --profile development --platform android",
-    "eas-ios": "eas build --profile development --platform ios",
-    "postinstall": "rm -rf node_modules/expo/node_modules/react-native-safe-area-context"
+    "eas-ios": "eas build --profile development --platform ios"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "~1.17.3",
@@ -30,6 +29,7 @@
     "react-dom": "18.1.0",
     "react-native": "0.70.5",
     "react-native-flipper": "^0.177.0",
+    "react-native-svg": "13.6.0",
     "react-native-web": "~0.18.7"
   },
   "devDependencies": {
