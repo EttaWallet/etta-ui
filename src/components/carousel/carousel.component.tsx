@@ -5,11 +5,9 @@ import {
   Text,
   View,
   Dimensions,
-} from 'react-native';
-import {
-  NativeSafeAreaViewProps,
   SafeAreaView,
-} from 'react-native-safe-area-context';
+} from 'react-native';
+import type { ViewProps } from 'react-native';
 import { Chip, Button, Pagination, useTheme, Icon, ValueOf } from 'etta-ui';
 import type { ButtonProps } from 'etta-ui';
 import { getCarouselStyles } from './carousel.style';
@@ -25,7 +23,7 @@ interface CarouselStepProps {
   variant?: 'old' | 'new';
 }
 
-export type Props = NativeSafeAreaViewProps & {
+export type Props = ViewProps & {
   embeddedNavBar: boolean;
   stepInfo: CarouselStepProps[];
   buttonType?: ButtonProps;

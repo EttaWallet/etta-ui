@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import {
   Text,
   ScrollView,
+  SafeAreaView,
   View,
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
 import { chunk, flatMap, shuffle, times } from 'lodash';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button, Chip, useTheme } from 'etta-ui';
 import { getMnemonicQuizStyles } from './mnemonic-quiz.style';
 
