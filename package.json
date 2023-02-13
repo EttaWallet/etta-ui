@@ -15,6 +15,7 @@
     "cpp",
     "*.podspec",
     "!lib/typescript/example",
+    "!lib/typescript/website",
     "!ios/build",
     "!android/build",
     "!android/gradle",
@@ -33,7 +34,9 @@
     "prepare": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn install"
+    "docs": "yarn --cwd website",
+    "bootstrap": "yarn example && yarn install",
+    "init-docs": "yarn docs && yarn install"
   },
   "keywords": [
     "bitcoin",
@@ -90,6 +93,7 @@
     "preset": "react-native",
     "modulePathIgnorePatterns": [
       "<rootDir>/example/node_modules",
+      "<rootDir>/website/node_modules",
       "<rootDir>/lib/"
     ]
   },
