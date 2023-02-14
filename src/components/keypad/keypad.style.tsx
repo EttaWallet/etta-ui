@@ -25,6 +25,10 @@ export const getKeyPadStyles = createThemedStyleSheet((theme) => ({
     color: theme.keypad.digitColor,
   },
   backspace: {
+    fontSize: 30,
+    justifyContent: 'center',
+    textAlign: 'center',
+    alignItems: 'center',
     color: theme.keypad.backspaceColor,
   },
 }));

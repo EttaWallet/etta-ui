@@ -34,9 +34,7 @@
     "prepare": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "docs": "yarn --cwd website",
-    "bootstrap": "yarn example && yarn install",
-    "init-docs": "yarn docs && yarn install"
+    "bootstrap": "yarn example && yarn install"
   },
   "keywords": [
     "bitcoin",
@@ -165,7 +163,6 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "react-native-big-list": "^1.6.0",
-    "react-native-svg": "^13.8.0"
+    "react-native-big-list": "^1.6.0"
   }
 }
