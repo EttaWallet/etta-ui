@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
-import NamedStyles = StyleSheet.NamedStyles;
 import type { ExtendedTheme, Theme } from './theme.types';
+
+export type NamedStyles<T> = StyleSheet.NamedStyles<T>;
 
 export function createThemedStyleSheet<
   Styles extends NamedStyles<Styles>,
